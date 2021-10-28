@@ -9,5 +9,13 @@
             "short": "Help command",
             "long": "`/help <category>`: Lists commands in <category>.\n`/help <command>`: Shows more detailed informatino for a command."
         }
+    },
+
+
+    "math": {
+        "calc": {
+            "short": "Calculates math equations",
+            "long": "Calculates math equations. Things it accepts: https://mathjs.org/"
+        }
     }
 }

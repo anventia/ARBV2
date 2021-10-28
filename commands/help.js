@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, Message, InteractionCollector } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const FileSystem = require('fs');
-const { stringify } = require('querystring');
 
 
 module.exports = {
@@ -12,7 +11,7 @@ module.exports = {
             .setName('input')
             .setDescription('Category or command to view')
             .setRequired(false)
-            ),
+        ),
         async execute(interaction) {
             const option = interaction.options.getString("input");
             //f.sendConsole('Option:', option, interaction, 'message');

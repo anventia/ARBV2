@@ -32,7 +32,8 @@ var f = require('./functions.js');
 // Data //
 global.iconurl = 'https://i.postimg.cc/0yjbgWSX/ARBV2.png';
 global.blank = '\u200b';
-global.embedBlue = `#3D5EA4`;
+global.embedBlue = '#3D5EA4';
+global.embedRed = '#fa4d4d';
 
 // Slash Commands //
 client.on('interactionCreate', async interaction => {

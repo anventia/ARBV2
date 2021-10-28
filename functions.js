@@ -14,6 +14,18 @@ f =  {
         }
     },
 
+    sendEmbed: async function sendEmbed(string1, string2, color, interaction, type) {  // Sends basic embed
+        const embed = new MessageEmbed()
+            .setColor(color)
+            .addField(string1, string2);
+        if(type == 'reply') {
+            await interaction.reply({embeds: [embed]});
+        }
+        if(type == 'message') {
+            await interaction.channel.send({embeds: [embed]});
+        }
+    },
+
     capitalize: async function capitalize(string) {
         return string[0].toUpperCase()+string.slice(1);
     }
