@@ -1,0 +1,21 @@
+{
+  "name": "arbv2",
+  "version": "1.0.0",
+  "description": "DiscordBot V2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anventia",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.7.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}
