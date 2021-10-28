@@ -3,6 +3,7 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
@@ -24,24 +25,41 @@ for (const file of eventFiles) {
 	}
 }
 
+// Initialize Functions //
+var f = require('./functions.js');
+
 
 // Data //
 global.iconurl = 'https://i.postimg.cc/0yjbgWSX/ARBV2.png';
 global.empty = '\u200b';
+global.embedBlue = `#3D5EA4`;
 
-// Basic Commands //
+// Slash Commands //
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction);  // Executes the command
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'An error occured!', ephemeral: true });
-    }
+		sendConsole("An error occured!", error, interaction, 'reply');
+    }	
 });
 
+async function sendConsole(title, value, interaction, type) {
+	const errorEmbed = new MessageEmbed()
+		.setColor(global.embedBlue)
+		.setAuthor(title)
+		.addField('Output:', `\`\`\`${value}\`\`\``);
+	if(type == 'reply') {
+		await interaction.reply({embeds: [errorEmbed]});
+	}
+	if(type == 'message') {
+		await interaction.channel.send({embeds: [errorEmbed]});
+	}
+
+}
 
 
 
