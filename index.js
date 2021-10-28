@@ -31,7 +31,7 @@ var f = require('./functions.js');
 
 // Data //
 global.iconurl = 'https://i.postimg.cc/0yjbgWSX/ARBV2.png';
-global.empty = '\u200b';
+global.blank = '\u200b';
 global.embedBlue = `#3D5EA4`;
 
 // Slash Commands //
@@ -47,11 +47,11 @@ client.on('interactionCreate', async interaction => {
     }	
 });
 
+const { MessageEmbed } = require('discord.js');
 async function sendConsole(title, value, interaction, type) {
 	const errorEmbed = new MessageEmbed()
 		.setColor(global.embedBlue)
-		.setAuthor(title)
-		.addField('Output:', `\`\`\`${value}\`\`\``);
+		.addField(title, `\`\`\`${value}\`\`\``);
 	if(type == 'reply') {
 		await interaction.reply({embeds: [errorEmbed]});
 	}

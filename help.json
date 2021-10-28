@@ -1,11 +1,13 @@
 {
-    "info": {
-        "short": "Shows bot information",
-        "long": "Shows bot information"
-    },
+    "system": {
+        "info": {
+            "short": "Shows bot information",
+            "long": "Shows bot information"
+        },
 
-    "help": {
-        "short": "Help command",
-        "long": "`/help <category>`: Lists commands in <category>.\n`/help <command>`: Shows more detailed informatino for a command."
+        "help": {
+            "short": "Help command",
+            "long": "`/help <category>`: Lists commands in <category>.\n`/help <command>`: Shows more detailed informatino for a command."
+        }
     }
 }
