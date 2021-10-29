@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const FileSystem = require('fs');
-
+const { helpPath } = require('../config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -13,13 +13,11 @@ module.exports = {
             .setRequired(false)
         ),
         async execute(interaction) {
-            const option = interaction.options.getString("input");
-            //f.sendConsole('Option:', option, interaction, 'message');
-            
-            const file = FileSystem.readFileSync('C:/Users/brend/OneDrive/Documents/DiscordBots/ARBV2/help.json');
+            const option = interaction.options.getString("input");            
+            const file = FileSystem.readFileSync(helpPath);
             const helpJSON = JSON.parse(file); // help.json 
 
-            // Check parameter //
+            // Check Parameter //
             var categoryList = '';
             if(option == null) {  // No parameter given, list categories
                 for(let category in helpJSON) {
@@ -56,7 +54,7 @@ module.exports = {
                     }
                 }
 
-                // send message //
+                // Send Message //
                 if(foundItem != 'none') {  // If item is found
                     var author = 'a';
                     var name1 = 'b';

@@ -2,9 +2,9 @@
 const { MessageEmbed } = require('discord.js');
 
 f =  {
-    sendConsole: async function sendConsole(title, value, interaction, type) {  // Sends value in code block to Discord
+    sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
         const errorEmbed = new MessageEmbed()
-            .setColor(global.embedBlue)
+            .setColor(color)
             .addField(title, `\`\`\`${value}\`\`\``);
         if(type == 'reply') {
             await interaction.reply({embeds: [errorEmbed]});

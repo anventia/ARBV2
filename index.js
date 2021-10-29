@@ -44,14 +44,14 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);  // Executes the command
 	} catch (error) {
 		console.error(error);
-		sendConsole("An error occured!", error, interaction, 'reply');
+		sendConsole("An error occured!", error, global.embedRed, interaction, 'reply');
     }	
 });
 
 const { MessageEmbed } = require('discord.js');
-async function sendConsole(title, value, interaction, type) {
+async function sendConsole(title, value, color, interaction, type) {
 	const errorEmbed = new MessageEmbed()
-		.setColor(global.embedBlue)
+		.setColor(color)
 		.addField(title, `\`\`\`${value}\`\`\``);
 	if(type == 'reply') {
 		await interaction.reply({embeds: [errorEmbed]});
