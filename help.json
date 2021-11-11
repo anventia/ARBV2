@@ -1,21 +1,24 @@
 {
     "system": {
         "info": {
+            "usage": "/info",
             "short": "Shows bot information",
             "long": "Shows bot information"
         },
 
         "help": {
+            "usage": "/help `<category>`\n/help `<command>`",
             "short": "Help command",
-            "long": "`/help <category>`: Lists commands in <category>.\n`/help <command>`: Shows more detailed informatino for a command."
+            "long": "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command."
         }
     },
 
 
     "math": {
         "calc": {
+            "usage": "/calc `<equation>`",
             "short": "Calculates math equations",
-            "long": "Calculates math equations. Things it accepts: https://mathjs.org/"
+            "long": "Calculates `<equation>`. Things it accepts: https://mathjs.org/"
         }
     }
 }

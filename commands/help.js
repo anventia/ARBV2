@@ -45,7 +45,7 @@ module.exports = {
                     } else {  // Search commands within category
                         for(let command in helpJSON[category]) {
                             if(command == option.toLowerCase()) {  // Command matches category
-                                item = command;  // Sets item to command name
+                                item = helpJSON[category][command]['usage'];  // Sets item to command usage
                                 desc = helpJSON[category][command]['long'];  // Sets description to long command description
                                 foundItem = 'command';
                                 break;
@@ -56,6 +56,8 @@ module.exports = {
 
                 // Send Message //
                 if(foundItem != 'none') {  // If item is found
+                    const helpEmbed = new MessageEmbed()
+
                     var author = 'a';
                     var name1 = 'b';
                     var name2 = 'c';
@@ -63,21 +65,29 @@ module.exports = {
                         author = `Command list for category "${f.capitalize(option.toLowerCase())}":`;
                         name1 = 'Command:';
                         name2 = 'Basic Description: (Do `/help <command>` for more info)'
+                        helpEmbed
+                            .setColor(global.embedBlue)
+                            .setAuthor(author, global.iconurl)
+                            .addFields(
+                                { name: name1, value: item, inline: true },
+                                { name: global.blank, value: global.blank, inline:true },
+                                { name: name2, value: desc, inline: true }
+                            );
                     }
                     if(foundItem == 'command') {  // Sets texts for command info
                         author = `Information for command "${option.toLowerCase()}":`;
-                        name1 = 'Name:';
+                        name1 = 'Usage:';
                         name2 = 'Description:';
+                        helpEmbed
+                            .setColor(global.embedBlue)
+                            .setAuthor(author, global.iconurl)
+                            .addFields(
+                                { name: name1, value: item, inline: false },
+                                { name: name2, value: desc, inline: false }
+                            );
                     }
 
-                    const helpEmbed = new MessageEmbed()
-                        .setColor(global.embedBlue)
-                        .setAuthor(author, global.iconurl)
-                        .addFields(
-                            { name: name1, value: item, inline: true },
-                            { name: global.blank, value: global.blank, inline:true },
-                            { name: name2, value: desc, inline: true }
-                        );
+                    
                     await interaction.reply({embeds: [helpEmbed]})
                 }
             }

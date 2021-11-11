@@ -17,9 +17,22 @@ module.exports = {
         try {
             output = math.evaluate(input);
         } catch (err) {
-            f.sendEmbed('Error:', 'Invalid equation!', global.embedRed, interaction, 'reply');
+            const replyEmbed = new MessageEmbed()
+            .setColor(global.embedRed)
+            .addField('Input:', `\`\`\`${input}\`\`\``)
+            .addField('Output:', `\`\`\`Error: Invalid equation\`\`\``)
+		    await interaction.reply({embeds: [replyEmbed]});
             return;
         }
+
+        
+
+        output = String(output);
+        if(output.length > 1024) {  // Cuts off output and adds '...' if longer than 1024
+            output = output.substr(0,1015);
+            output += '...';
+        }
+
         const replyEmbed = new MessageEmbed()
             .setColor(global.embedBlue)
             .addField('Input:', `\`\`\`${input}\`\`\``)
