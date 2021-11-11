@@ -1,5 +1,6 @@
 {
     "system": {
+        "description": "Bot system commands",
         "info": {
             "usage": "/info",
             "short": "Shows bot information",
@@ -14,7 +15,18 @@
     },
 
 
+    "discord": {
+        "description": "Discord-related commands",
+        "server": {
+            "usage": "/server",
+            "short": "Shows information about your server.",
+            "long": "Shows information about your server, such as member, channel, role, and emoji counts, and creation date."
+        }
+    },
+
+
     "math": {
+        "description": "Math and numbers",
         "calc": {
             "usage": "/calc `<equation>`",
             "short": "Calculates math equations",

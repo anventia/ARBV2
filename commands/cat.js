@@ -9,14 +9,10 @@ module.exports = {
 		.setDescription('Shows a random cat picture and cat fact!'),
 	async execute(interaction) {
         var imgJSON;
+        var url = 'http://api.thecatapi.com/v1/images/search';
         
 
-        let cat = function() { fetch('https://api.thecatapi.com/v1/images/search')
-            .then(res => res.text())
-            .then(res => {return res}); 
-        }
-
-        console.log(cat());
+        console.log(imgJSON);
         return;
         const catembed = new MessageEmbed()
             .setColor(global.embedBlue)

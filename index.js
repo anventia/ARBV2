@@ -3,8 +3,11 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
+const myIntents = new Intents();
+myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS);
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+//const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -64,5 +67,5 @@ async function sendConsole(title, value, color, interaction, type) {
 
 
 
-// Login to Discord with your client
+// Log in and run bot
 client.login(token);
