@@ -33,6 +33,9 @@ module.exports = {
         var voice_channels = all_channels.filter(c => c.type === 'GUILD_VOICE').size;
         var channels = text_channels + voice_channels;
         var afk = guild.afkChannelId;
+        if(afk == null) { afk = 'No AFK channel set'; }
+        else { afk = '<#' + afk + '>'; }
+
 
         // Other Information //
         var created = new Date(guild.createdTimestamp);
@@ -45,6 +48,7 @@ module.exports = {
         var joined_date = await f.twoDigits(joined.getDate().toString());
         
 
+        // Create Embed //
 		const serverEmbed = new MessageEmbed() 
             .setColor(global.embedBlue)
             .setTitle(`Information for "${name}"`)
@@ -62,7 +66,7 @@ module.exports = {
             .addFields(
                 { name: 'Channel Information:', value: 'Categories:\nTotal Channels:\nText Channels:\nVoice Channels:\nAFK Voice Channel:', inline: true},
                 { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n<#${afk}>`, inline: true }
+                { name: global.blank, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true }
             )
             .addFields(
                 { name: 'Other Information:', value: 'ID:\nCreation Date\nBot Join Date:', inline: true},

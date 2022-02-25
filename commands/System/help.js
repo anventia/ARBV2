@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const FileSystem = require('fs');
-const { helpPath } = require('../config.json')
+const { helpPath } = require('../../config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -43,8 +43,7 @@ module.exports = {
                 for(let category in helpJSON) {
                     if(category == option.toLowerCase()) {  // Option matches category
                         for(let command in helpJSON[category]) {  // Loop through each command and add to output
-                            cmd = ''+command;
-                            if(cmd === ('description')) { continue; }
+                            if(command == ('description')) { continue; }
                             item += command+'\n';  // Add command name to items
                             desc += helpJSON[category][command]['short']+'\n';  // Add short description to descriptions
                         }
@@ -62,7 +61,7 @@ module.exports = {
                     }
                 }   
 
-                
+
                 // Send Message //
                 if(foundItem != 'none') {  // If item is found
                     const helpEmbed = new MessageEmbed()
@@ -71,12 +70,12 @@ module.exports = {
                     var name1 = 'b';
                     var name2 = 'c';
                     if(foundItem == 'category') {  // Sets texts for category info
-                        author = `Command list for category "${f.capitalize(option.toLowerCase())}":`;
+                        author = `Command list for category "${option[0].toUpperCase() + option.toLowerCase().substring(1)}":`;
                         name1 = 'Command:';
                         name2 = 'Basic Description: (Do `/help <command>` for more info)'
                         helpEmbed
                             .setColor(global.embedBlue)
-                            .setAuthor(author, global.iconurl)
+                            .setAuthor(author)
                             .addFields(
                                 { name: name1, value: item, inline: true },
                                 { name: global.blank, value: global.blank, inline: true },
@@ -89,7 +88,7 @@ module.exports = {
                         name2 = 'Description:';
                         helpEmbed
                             .setColor(global.embedBlue)
-                            .setAuthor(author, global.iconurl)
+                            .setAuthor(author)
                             .addFields(
                                 { name: name1, value: item, inline: false },
                                 { name: name2, value: desc, inline: false }

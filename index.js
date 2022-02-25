@@ -10,13 +10,21 @@ myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.G
 const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	// Set a new item in the Collection
-	// With the key as the command name and the value as the exported module
-	client.commands.set(command.data.name, command);
+
+function setCommands() {
+	const commandFolders = fs.readdirSync('./commands');
+    for(const folder of commandFolders) {  // For each folder...
+        const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));  // Load that folder
+
+        for(const file of loadFolder) {  // For each file within the folder
+            const command = require(`./commands/${folder}/${file}`);  // Load file
+	        client.commands.set(command.data.name, command);
+
+        }
+        
+    }
 }
+setCommands();
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
@@ -38,6 +46,7 @@ global.blank = '\u200b';
 global.embedBlue = '#3D5EA4';
 global.embedRed = '#fa4d4d';
 
+
 // Slash Commands //
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
@@ -47,7 +56,7 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);  // Executes the command
 	} catch (error) {
 		console.error(error);
-		sendConsole("An error occured!", error, global.embedRed, interaction, 'reply');
+		sendConsole("An error occured!", error, global.embedRed, interaction, 'reply');  // Error handling
     }	
 });
 
