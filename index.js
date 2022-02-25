@@ -15,11 +15,11 @@ function setCommands() {
 	const commandFolders = fs.readdirSync('./commands');
     for(const folder of commandFolders) {  // For each folder...
         const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));  // Load that folder
-
+		console.log(" -> "+folder);
         for(const file of loadFolder) {  // For each file within the folder
             const command = require(`./commands/${folder}/${file}`);  // Load file
 	        client.commands.set(command.data.name, command);
-
+			console.log("Loaded "+file);
         }
         
     }
