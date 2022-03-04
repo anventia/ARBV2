@@ -25,7 +25,6 @@ module.exports = {
             return;
         }
 
-        
 
         output = String(output);
         if(output.length > 1024) {  // Cuts off output and adds '...' if longer than 1024

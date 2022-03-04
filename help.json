@@ -32,5 +32,15 @@
             "short": "Calculates math equations",
             "long": "Calculates `<equation>`. Things it accepts: https://mathjs.org/"
         }
+    },
+
+
+    "other": {
+        "description": "Other commands",
+        "time": {
+            "usage": "/time",
+            "short": "Gets time and date",
+            "long": "Gets time and date in UTC, will add timezone feature later."
+        }
     }
 }
