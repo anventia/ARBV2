@@ -6,7 +6,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('server')
 		.setDescription('Shows server information'),
-	async execute(interaction) {
+	async execute(client, interaction) {
         var guild = interaction.guild;
         var id = interaction.guildId;
         var name = guild.name;

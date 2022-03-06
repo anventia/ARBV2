@@ -12,7 +12,7 @@ module.exports = {
             .setDescription('Category or command to view')
             .setRequired(false)
         ),
-        async execute(interaction) {
+        async execute(client, interaction) {
             const option = interaction.options.getString("input");            
             const file = FileSystem.readFileSync(helpPath);
             const helpJSON = JSON.parse(file); // help.json 

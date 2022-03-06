@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('cat')
 		.setDescription('Shows a random cat picture and cat fact!'),
-	async execute(interaction) {
+	async execute(client, interaction) {
         var imgJSON;
         var url = 'http://api.thecatapi.com/v1/images/search';
         

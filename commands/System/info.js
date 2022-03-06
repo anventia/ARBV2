@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('info')
 		.setDescription('Shows bot information'),
-	async execute(interaction) {
+	async execute(client, interaction) {
 		const infoEmebed = new MessageEmbed() 
             .setColor(global.embedBlue)
             .setAuthor('Information page for ARB.V2', global.iconurl)

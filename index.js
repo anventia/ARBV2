@@ -5,8 +5,6 @@ const { token } = require('./config.json');
 
 const myIntents = new Intents();
 myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS);
-
-//const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
@@ -53,7 +51,7 @@ client.on('interactionCreate', async interaction => {
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
 	try {
-		await command.execute(interaction);  // Executes the command
+		await command.execute(client, interaction);  // Executes the command
 	} catch (error) {
 		console.error(error);
 		sendConsole("An error occured!", error, global.embedRed, interaction, 'reply');  // Error handling

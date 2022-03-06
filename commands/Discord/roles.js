@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('roles')
 		.setDescription('Lists roles in the server.'),
-	async execute(interaction) {
+	async execute(client, interaction) {
         const numRoles = 30;  // Number of roles per page
         const numPages = 2;  // Number of pages to display
 

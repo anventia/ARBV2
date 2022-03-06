@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Tests latency'),
-	async execute(interaction) {
-		await interaction.reply(`Pong! Latency is: ${0-(Date.now() - interaction.createdTimestamp)}ms`);
+	async execute(client, interaction) {
+		await interaction.reply(`Pong! Latency is: ${client.ws.ping}ms`)
 	}
 }
