@@ -2,11 +2,12 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const math = require('mathjs');
 const branchy = require('branchy');  // Library that runs function in seperate process
+const { string } = require('mathjs');
 const matheval = (input) => {
     const math = require('mathjs');
     try {
         return String(math.evaluate(input));
-    } catch(err) { console.log("ERROR!!!"); }
+    } catch(err) { console.log("Error with calculation"); }
 }
 const forkedEvaluate = branchy(matheval);
 
@@ -23,16 +24,14 @@ module.exports = {
         const input = interaction.options.getString("input");
         var output = '';
         try {
-            // output = math.evaluate(input);
-            // output = matheval.matheval(input);
             output = String(await forkedEvaluate(input));
+            if (string(output) == "undefined") { throw "Invalid"; }
             console.log(output);
-
-        } catch (err) {
+        } catch(err) {
             const replyEmbed = new MessageEmbed()
             .setColor(global.embedRed)
             .addField('Input:', `\`\`\`${input}\`\`\``)
-            .addField('Output:', `\`\`\`Error: Invalid equation\`\`\``)
+            .addField('Output:', `\`\`\`Error: Invalid equation!\`\`\``)
 		    await interaction.reply({embeds: [replyEmbed]});
             console.log(err);
             return;
