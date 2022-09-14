@@ -26,7 +26,6 @@ module.exports = {
         try {
             output = String(await forkedEvaluate(input));
             if (string(output) == "undefined") { throw "Invalid"; }
-            console.log(output);
         } catch(err) {
             const replyEmbed = new MessageEmbed()
             .setColor(global.embedRed)
@@ -46,8 +45,8 @@ module.exports = {
 
         const replyEmbed = new MessageEmbed()
             .setColor(global.embedBlue)
-            .addField('Input:', `\`\`\`${input}\`\`\``)
-            .addField('Output:', `\`\`\`${output}\`\`\``)
+            .addField('Input:', `\`\`\`js\n${input}\`\`\``)
+            .addField('Output:', `\`\`\`js\n${output}\`\`\``)
 		await interaction.reply({embeds: [replyEmbed]});
 	}
 }

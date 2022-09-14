@@ -39,7 +39,7 @@ module.exports = {
         for(let i=BigInt(0); i<valueRev.length; i++) {
             let char = valueRev[i].toString();  // Current character
             let charVal = BigInt(numbers.indexOf(char));  // Value of char, e.g. 1 -> 1, F -> 15
-            if(charVal >= start+1n) {  // make sure input matches starting base, e.g. "1234" is not valid for base 2
+            if(charVal >= start+1n || charVal == -1n) {  // make sure input matches starting base, e.g. "1234" is not valid for base 2
                 await interaction.reply({ content: "Error: Value and base incompatible!", ephemeral: true }); return ;
             }
             const startB = BigInt(start);
@@ -49,25 +49,23 @@ module.exports = {
 
         // Convert from Base 10 to Target Base //
         var valueTar = "";  // value converted into the Target Base
-        //valueB10REV = valueB10.toString().split("").reverse();  // Makes list of the characters in valueB10, but reversed
         var valueB10T = BigInt(valueB10);  // Temp value for division
         for(let i=0; valueB10T > 0; i++) {
             let mod = valueB10T % target;  // Gets the remainder from operation
             valueTar = numbers[Number(mod)] + valueTar;  // Increment result
             valueB10T = valueB10T / target;  // Sets valueB10 to remaining number after division
         }
-        if(valueTar.length > 1000) {valueTar = valueTar.substring(0,1000)+" ..."; }
+        if(valueTar.length > 1000) {valueTar = valueTar.substring(0,1000)+" ..."; }  // Trim output to fit within Discord message size limit
 
 
-        // Send message // (update this with embed later!)
-        //await interaction.reply(`Base ${start}:\n\`\`\`${value}\`\`\`\nBase 10:\n\`\`\`${valueB10}\`\`\`\nBase ${target}:\n\`\`\`${valueTar}\`\`\``)
+        // Send message //
         const inputEmbed = new MessageEmbed()
 		    .setColor(global.embedBlue)
-		    .addField(`Input (Base ${start})`, `\`\`\`${value}\`\`\``);
+		    .addField(`Input (Base ${start})`, `\`\`\`js\n${value}\`\`\``);
         await interaction.reply({embeds: [inputEmbed]});
         const outputEmbed = new MessageEmbed()
 		    .setColor(global.embedBlue)
-		    .addField(`Output (Base ${target})`, `\`\`\`${valueTar}\`\`\``);
+		    .addField(`Output (Base ${target})`, `\`\`\`js\n${valueTar}\`\`\``);
         await interaction.channel.send({embeds: [outputEmbed]});
     }
 }
