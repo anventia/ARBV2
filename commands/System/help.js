@@ -16,13 +16,13 @@ module.exports = {
             const option = interaction.options.getString("input");            
             const file = FileSystem.readFileSync(helpPath);
             const helpJSON = JSON.parse(file); // help.json 
-
+            
             
             // Check Parameter //
-            var foundItem = 'none';
-            var categoryList = '';
+            let foundItem = 'none';
+            let categoryList = '';
             if(option == null) {  // No parameter given, list categories
-                var categoryDescription = '';
+                let categoryDescription = '';
                 for(let category in helpJSON) {
                     categoryList += category[0].toUpperCase()+category.slice(1)+'\n';
                     categoryDescription += helpJSON[category]['description']+'\n';
@@ -38,8 +38,8 @@ module.exports = {
                 await interaction.reply({embeds: [helpEmbed]})
                 return;
             } else if(option.toLowerCase() !== 'description') {  // Loop through categories, then commands for info
-                var item = '';
-                var desc = '';
+                let item = '';
+                let desc = '';
                 for(let category in helpJSON) {
                     if(category == option.toLowerCase()) {  // Option matches category
                         for(let command in helpJSON[category]) {  // Loop through each command and add to output
@@ -60,15 +60,15 @@ module.exports = {
                         }
                     }
                 }   
+                
 
-
-                // Send Message //
+                // Send Output //
                 if(foundItem != 'none') {  // If item is found
                     const helpEmbed = new MessageEmbed()
 
-                    var author = 'a';
-                    var name1 = 'b';
-                    var name2 = 'c';
+                    let author = 'a';
+                    let name1 = 'b';
+                    let name2 = 'c';
                     if(foundItem == 'category') {  // Sets texts for category info
                         author = `Command list for category "${option[0].toUpperCase() + option.toLowerCase().substring(1)}":`;
                         name1 = 'Command:';
@@ -94,8 +94,6 @@ module.exports = {
                                 { name: name2, value: desc, inline: false }
                             );
                     }
-
-                    
                     await interaction.reply({embeds: [helpEmbed]})
                 } else {  // Parameter not found
                     await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, 'reply')

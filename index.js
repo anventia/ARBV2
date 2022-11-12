@@ -35,7 +35,7 @@ for (const file of eventFiles) {
 }
 
 // Initialize Functions //
-var f = require('./functions.js');
+let f = require('./functions.js');
 
 
 // Data //

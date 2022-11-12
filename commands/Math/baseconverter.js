@@ -23,7 +23,7 @@ module.exports = {
         ),
     async execute(client, interaction) {
         // Setup //
-        var value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs
+        const value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs
         const start  = BigInt(interaction.options.getString("start"));
         const target = BigInt(interaction.options.getString("target"));
         const numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");  // (62) All the characters used as numbers.
@@ -34,7 +34,7 @@ module.exports = {
 
 
         // Convert value to Base 10  //
-        var valueB10 = BigInt(0);  // value converted into Base 10
+        let valueB10 = BigInt(0);  // value converted into Base 10
         const valueRev = value.toString().split("").reverse();  // Makes list of the characters in value, but reversed
         for(let i=BigInt(0); i<valueRev.length; i++) {
             let char = valueRev[i].toString();  // Current character
@@ -48,9 +48,9 @@ module.exports = {
         
 
         // Convert from Base 10 to Target Base //
-        var valueTar = "";  // value converted into the Target Base
-        var valueB10T = BigInt(valueB10);  // Temp value for division
-        for(let i=0; valueB10T > 0; i++) {
+        let valueTar = "";  // value converted into the Target Base
+        let valueB10T = BigInt(valueB10);  // Temp value for division
+        while(valueB10T > 0) {
             let mod = valueB10T % target;  // Gets the remainder from operation
             valueTar = numbers[Number(mod)] + valueTar;  // Increment result
             valueB10T = valueB10T / target;  // Sets valueB10 to remaining number after division
@@ -58,7 +58,7 @@ module.exports = {
         if(valueTar.length > 1000) {valueTar = valueTar.substring(0,1000)+" ..."; }  // Trim output to fit within Discord message size limit
 
 
-        // Send message //
+        // Send Output //
         const inputEmbed = new MessageEmbed()
 		    .setColor(global.embedBlue)
 		    .addField(`Input (Base ${start})`, `\`\`\`js\n${value}\`\`\``);

@@ -8,13 +8,14 @@
             "request": "launch",
             "name": "Deploy Commands",
             "skipFiles": ["<node_internals>/**"],
-            "program": "${workspaceFolder}\\deploy-commands.js" },
-
+            "program": "${workspaceFolder}\\deploy-commands.js" 
+        },
         {   "type": "node",
             "request": "launch",
             "name": "Launch Bot",
             "skipFiles": ["<node_internals>/**"],
-            "program": "${workspaceFolder}\\index.js" }
+            "program": "${workspaceFolder}\\index.js" 
+        }
     ],
 
     "compounds": [

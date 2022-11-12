@@ -22,7 +22,7 @@ module.exports = {
         ),
 	async execute(client, interaction) {
         const input = interaction.options.getString("input");
-        var output = '';
+        let output = '';
         try {
             output = String(await forkedEvaluate(input));
             if (string(output) == "undefined") { throw "Invalid"; }
@@ -36,7 +36,8 @@ module.exports = {
             return;
         }
 
-
+        
+        // Send Output //
         output = String(output);
         if(output.length > 1024) {  // Cuts off output and adds '...' if longer than 1024
             output = output.substr(0,1015);

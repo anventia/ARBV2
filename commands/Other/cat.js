@@ -8,8 +8,8 @@ module.exports = {
 		.setName('cat')
 		.setDescription('Shows a random cat picture and cat fact!'),
 	async execute(client, interaction) {
-        var imgJSON;
-        var url = 'http://api.thecatapi.com/v1/images/search';
+        let imgJSON;
+        const url = 'http://api.thecatapi.com/v1/images/search';
         
 
         console.log(imgJSON);

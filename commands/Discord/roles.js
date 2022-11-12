@@ -9,13 +9,15 @@ module.exports = {
         const numRoles = 30;  // Number of roles per page
         const numPages = 2;  // Number of pages to display
 
-        var guild = interaction.guild;
-        var roles = guild.roles.cache;
-        var names = "";
-        var output = "";
+        const guild = interaction.guild;
+        const roles = guild.roles.cache;
+        let names = "";
+        let output = "";
         console.log(roles);
 
-        for(let i of roles) {  // Gather data from roles
+
+        // Gather Data //
+        for(let i of roles) {
             names += i[1]['name'] + "\n";
             if(String(output).length <= 1000)  { 
                 output += "<@&" + i[1]['id'] + "> ";
@@ -34,6 +36,7 @@ module.exports = {
         }
 
 
+        // Send Output //
         const serverEmbed = new MessageEmbed() 
             .setColor(global.embedBlue)
             .setTitle(`Role information`)

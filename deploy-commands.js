@@ -25,21 +25,25 @@ function loadCommands() {
 loadCommands();
 
 
-
+// Three specific test servers for registering commands
 const rest = new REST({ version: '9' }).setToken(token);
-
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands 1.'))
 	.catch(console.error);
     
 const rest2 = new REST({ version: '9' }).setToken(token);
-
 rest2.put(Routes.applicationGuildCommands(clientId, guildId2), { body: commands })
     .then(() => console.log('Successfully registered application commands 2.'))
     .catch(console.error);
         
 const rest3 = new REST({ version: '9' }).setToken(token);
-
 rest3.put(Routes.applicationGuildCommands(clientId, guildId3), { body: commands })
     .then(() => console.log('Successfully registered application commands 3.'))
+    .catch(console.error);
+
+
+// Global deployment
+const rest4 = new REST({ version: '9' }).setToken(token);
+rest4.put(Routes.applicationCommands(clientId), { body: commands })
+    .then(() => console.log("Successfully registered Global Application Commands"))
     .catch(console.error);

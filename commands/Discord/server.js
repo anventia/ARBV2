@@ -7,48 +7,48 @@ module.exports = {
 		.setName('server')
 		.setDescription('Shows server information'),
 	async execute(client, interaction) {
-        var guild = interaction.guild;
-        var id = interaction.guildId;
-        var name = guild.name;
-        var iconURL = guild.iconURL();
+        let guild = interaction.guild;
+        let id = interaction.guildId;
+        let name = guild.name;
+        let iconURL = guild.iconURL();
 
         // Member Information //
-        var owner = guild.ownerId;
-        var member_count = guild.memberCount;
-        var members = await guild.members.fetch();
-        var admins = members.filter(m => m.permissions.has(new Permissions(Permissions.FLAGS.ADMINISTRATOR)) === true && m.user.bot === false).size;
-        var users = members.filter(m => m.user.bot === false).size;
-        var bots = members.filter(m => m.user.bot === true).size;
+        let owner = guild.ownerId;
+        let member_count = guild.memberCount;
+        let members = await guild.members.fetch();
+        let admins = members.filter(m => m.permissions.has(new Permissions(Permissions.FLAGS.ADMINISTRATOR)) === true && m.user.bot === false).size;
+        let users  = members.filter(m => m.user.bot === false).size;
+        let bots   = members.filter(m => m.user.bot === true).size;
         
         
         // Server Information //
-        var roles = guild.roles.cache.size;
-        var emotes = guild.emojis.cache.size;
+        let roles = guild.roles.cache.size;
+        let emotes = guild.emojis.cache.size;
 
 
         // Channel Information //
-        var all_channels = await guild.channels.fetch();
-        var categories = all_channels.filter(c => c.type === 'GUILD_CATEGORY').size;
-        var text_channels = all_channels.filter(c => c.type === 'GUILD_TEXT').size;
-        var voice_channels = all_channels.filter(c => c.type === 'GUILD_VOICE').size;
-        var channels = text_channels + voice_channels;
-        var afk = guild.afkChannelId;
+        let all_channels = await guild.channels.fetch();
+        let categories     = all_channels.filter(c => c.type === 'GUILD_CATEGORY').size;
+        let text_channels  = all_channels.filter(c => c.type === 'GUILD_TEXT').size;
+        let voice_channels = all_channels.filter(c => c.type === 'GUILD_VOICE').size;
+        let channels = text_channels + voice_channels;
+        let afk = guild.afkChannelId;
         if(afk == null) { afk = 'No AFK channel set'; }
         else { afk = '<#' + afk + '>'; }
 
 
         // Other Information //
-        var created = new Date(guild.createdTimestamp);
-        var created_year = created.getFullYear();
-        var created_month = await f.twoDigits(created.getMonth().toString());
-        var created_date = await f.twoDigits(created.getDate().toString());
-        var joined = new Date(guild.joinedTimestamp);
-        var joined_year = joined.getFullYear();
-        var joined_month = await f.twoDigits(joined.getMonth().toString());
-        var joined_date = await f.twoDigits(joined.getDate().toString());
+        let created = new Date(guild.createdTimestamp);
+        let created_year = created.getFullYear();
+        let created_month = await f.twoDigits(created.getMonth().toString());
+        let created_date = await f.twoDigits(created.getDate().toString());
+        let joined = new Date(guild.joinedTimestamp);
+        let joined_year = joined.getFullYear();
+        let joined_month = await f.twoDigits(joined.getMonth().toString());
+        let joined_date = await f.twoDigits(joined.getDate().toString());
         
 
-        // Create Embed //
+        // Send Output //
 		const serverEmbed = new MessageEmbed() 
             .setColor(global.embedBlue)
             .setTitle(`Information for "${name}"`)
