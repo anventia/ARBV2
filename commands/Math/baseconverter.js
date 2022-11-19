@@ -23,7 +23,7 @@ module.exports = {
         ),
     async execute(client, interaction) {
         // Setup //
-        const value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs
+        let value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs
         const start  = BigInt(interaction.options.getString("start"));
         const target = BigInt(interaction.options.getString("target"));
         const numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");  // (62) All the characters used as numbers.

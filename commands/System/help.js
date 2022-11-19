@@ -13,9 +13,8 @@ module.exports = {
             .setRequired(false)
         ),
         async execute(client, interaction) {
-            const option = interaction.options.getString("input");            
-            const file = FileSystem.readFileSync(helpPath);
-            const helpJSON = JSON.parse(file); // help.json 
+            const option = interaction.options.getString("input").toLowerCase();            
+            const helpJSON = JSON.parse(FileSystem.readFileSync(helpPath));  // help.json 
             
             
             // Check Parameter //
@@ -37,11 +36,11 @@ module.exports = {
                     );
                 await interaction.reply({embeds: [helpEmbed]})
                 return;
-            } else if(option.toLowerCase() !== 'description') {  // Loop through categories, then commands for info
+            } else if(option !== 'description') {  // Loop through categories, then commands for info
                 let item = '';
                 let desc = '';
                 for(let category in helpJSON) {
-                    if(category == option.toLowerCase()) {  // Option matches category
+                    if(category == option) {  // Option matches category
                         for(let command in helpJSON[category]) {  // Loop through each command and add to output
                             if(command == ('description')) { continue; }
                             item += command+'\n';  // Add command name to items
@@ -51,7 +50,7 @@ module.exports = {
                         break;
                     } else {  // Search commands within category
                         for(let command in helpJSON[category]) {
-                            if(command == option.toLowerCase() && command != 'description') {  // Command matches category
+                            if(command == option && command != 'description') {  // Command matches category
                                 item = helpJSON[category][command]['usage'];  // Sets item to command usage
                                 desc = helpJSON[category][command]['long'];  // Sets description to long command description
                                 foundItem = 'command';
@@ -70,7 +69,7 @@ module.exports = {
                     let name1 = 'b';
                     let name2 = 'c';
                     if(foundItem == 'category') {  // Sets texts for category info
-                        author = `Command list for category "${option[0].toUpperCase() + option.toLowerCase().substring(1)}":`;
+                        author = `Command list for category "${option[0].toUpperCase() + option.substring(1)}":`;
                         name1 = 'Command:';
                         name2 = 'Basic Description: (Do `/help <command>` for more info)'
                         helpEmbed
@@ -83,7 +82,7 @@ module.exports = {
                             );
                     }
                     if(foundItem == 'command') {  // Sets texts for command info
-                        author = `Information for command "${option.toLowerCase()}":`;
+                        author = `Information for command "${option}":`;
                         name1 = 'Usage:';
                         name2 = 'Description:';
                         helpEmbed
