@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('roles')
-		.setDescription('Lists roles in the server.'),
+		.setName("roles")
+		.setDescription("Lists roles in the server."),
 	async execute(client, interaction) {
         const numRoles = 30;  // Number of roles per page
         const numPages = 2;  // Number of pages to display
@@ -18,9 +18,9 @@ module.exports = {
 
         // Gather Data //
         for(let i of roles) {
-            names += i[1]['name'] + "\n";
+            names += i[1]["name"] + "\n";
             if(String(output).length <= 1000)  { 
-                output += "<@&" + i[1]['id'] + "> ";
+                output += "<@&" + i[1]["id"] + "> ";
             } else {
                 const serverEmbed = new MessageEmbed() 
                     .setColor(global.embedBlue)

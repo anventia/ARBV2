@@ -1,16 +1,16 @@
 // General-use Functions //
-const { MessageEmbed } = require('discord.js');
-const https = require('https');
+const { MessageEmbed } = require("discord.js");
+const https = require("https");
 
 f =  {
     sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
         const errorEmbed = new MessageEmbed()
             .setColor(color)
             .addField(title, `\`\`\`${value}\`\`\``);
-        if(type == 'reply') {
+        if(type == "reply") {
             await interaction.reply({embeds: [errorEmbed]});
         }
-        if(type == 'message') {
+        if(type == "message") {
             await interaction.channel.send({embeds: [errorEmbed]});
         }
     },
@@ -19,10 +19,10 @@ f =  {
         const embed = new MessageEmbed()
             .setColor(color)
             .addField(string1, string2);
-        if(type == 'reply') {
+        if(type == "reply") {
             await interaction.reply({embeds: [embed]});
         }
-        if(type == 'message') {
+        if(type == "message") {
             await interaction.channel.send({embeds: [embed]});
         }
     },
@@ -31,10 +31,10 @@ f =  {
         const embed = new MessageEmbed()
             .setColor(color)
             .setDescription(string);
-        if(type == 'reply') {
+        if(type == "reply") {
             await interaction.reply({embeds: [embed]});
         }
-        if(type == 'message') {
+        if(type == "message") {
             await interaction.channel.send({embeds: [embed]});
         }
     },
@@ -44,7 +44,7 @@ f =  {
     },
 
     twoDigits: async function twoDigits(input) {  // 6 -> 06, 12 -> 12
-        return(input.length < 2 ? '0'+input : input); 
+        return(input.length < 2 ? "0"+input : input); 
     }
 
 }

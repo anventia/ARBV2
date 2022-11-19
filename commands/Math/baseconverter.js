@@ -1,24 +1,24 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
 
 
 module.exports = {
     data: new SlashCommandBuilder()
-		.setName('base')
-		.setDescription('Converts numbers between bases!')
+		.setName("base")
+		.setDescription("Converts numbers between bases!")
         .addStringOption(option => option
-            .setName('value')
-            .setDescription('Value to be converted')
+            .setName("value")
+            .setDescription("Value to be converted")
             .setRequired(true)
         )
         .addStringOption(option => option
-            .setName('start')
-            .setDescription('Starting base (2-62)')
+            .setName("start")
+            .setDescription("Starting base (2-62)")
             .setRequired(true)
         )
         .addStringOption(option => option
-            .setName('target')
-            .setDescription('Target base(2-62)')
+            .setName("target")
+            .setDescription("Target base(2-62)")
             .setRequired(true)
         ),
     async execute(client, interaction) {

@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'ready',
+	name: "ready",
 	once: true,
 	execute(client) {
 		client.user.setActivity("for Slash Commands", {  // Set status activity
