@@ -41,17 +41,27 @@
     },
 
 
+    "science": {
+        "description": "Science related commands",
+        "apod": {
+            "usage": "/apod",
+            "short": "Shows the NASA Astronomy Picture of the Day.",
+            "long":  "Shows the NASA Astronomy Picture of the Day."
+        },
+        "element": {
+            "usage": "/element <element>",
+            "short": "Shows information about an element.",
+            "long":  "Shows information about an element.\nAccepts Name, Atomic Mass, and Atomic Number."
+        }
+    },
+
+
     "fun": {
         "description": "Fun commands such as cat images",
         "animal": {
             "usage": "/<animal>",
             "short": "Shows a random <animal> image.",
             "long":  "Shows a random <animal> image. Currently there is cat, dog, fox, bird, and panda."
-        },
-        "apod": {
-            "usage": "/apod",
-            "short": "Shows the NASA Astronomy Picture of the Day.",
-            "long":  "Shows the NASA Astronomy Picture of the Day."
         }
     },
 
