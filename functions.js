@@ -6,7 +6,7 @@ f =  {
     sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
         const errorEmbed = new MessageEmbed()
             .setColor(color)
-            .addField(title, `\`\`\`${value}\`\`\``);
+            .addFields({ name: title, value: `\`\`\`${value}\`\`\`` });
         if(type == "reply") {
             await interaction.reply({embeds: [errorEmbed]});
         }
@@ -18,7 +18,7 @@ f =  {
     sendEmbed: async function sendEmbed(string1, string2, color, interaction, type) {  // Sends basic embed
         const embed = new MessageEmbed()
             .setColor(color)
-            .addField(string1, string2);
+            .addFields({ name: string1, value: string2 });
         if(type == "reply") {
             await interaction.reply({embeds: [embed]});
         }

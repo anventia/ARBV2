@@ -7,10 +7,12 @@ module.exports = {
 		.setName("server")
 		.setDescription("Shows server information"),
 	async execute(client, interaction) {
+        // Setup //
         let guild = interaction.guild;
         let id = interaction.guildId;
         let name = guild.name;
         let iconURL = guild.iconURL();
+
 
         // Member Information //
         let owner = guild.ownerId;
@@ -28,14 +30,14 @@ module.exports = {
 
         // Channel Information //
         let all_channels = await guild.channels.fetch();
-        console.log(all_channels);
+        all_channels = all_channels.filter(c => c != null);  // Forum channels currently not supported
         let categories     = all_channels.filter(c => c.type === "GUILD_CATEGORY").size;
         let text_channels  = all_channels.filter(c => c.type === "GUILD_TEXT").size;
         let voice_channels = all_channels.filter(c => c.type === "GUILD_VOICE").size;
         let channels = text_channels + voice_channels;
         let afk = guild.afkChannelId;
         if(afk == null) { afk = "No AFK channel set"; }
-        else { afk = "<#" + afk + ">"; }
+        else { afk = "<#" + afk + ">"; } 
 
 
         // Other Information //

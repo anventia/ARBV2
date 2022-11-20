@@ -29,8 +29,8 @@ module.exports = {
         } catch(err) {
             const replyEmbed = new MessageEmbed()
             .setColor(global.embedRed)
-            .addField("Input:", `\`\`\`${input}\`\`\``)
-            .addField("Output:", `\`\`\`Error: Invalid equation!\`\`\``)
+            .addFields({ name: "Input:", value: `\`\`\`${input}\`\`\`` })
+            .addFields({ name: "Output:", value: `\`\`\`Error: Invalid equation!\`\`\`` })
 		    await interaction.reply({embeds: [replyEmbed]});
             console.log(err);
             return;
@@ -46,8 +46,8 @@ module.exports = {
 
         const replyEmbed = new MessageEmbed()
             .setColor(global.embedBlue)
-            .addField("Input:", `\`\`\`js\n${input}\`\`\``)
-            .addField("Output:", `\`\`\`js\n${output}\`\`\``)
+            .addFields({ name:"Input:", value: `\`\`\`js\n${input}\`\`\`` })
+            .addFields({ name: "Output:", value: `\`\`\`js\n${output}\`\`\`` })
 		await interaction.reply({embeds: [replyEmbed]});
 	}
 }

@@ -9,21 +9,20 @@ const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
 
-function setCommands() {
-	const commandFolders = fs.readdirSync("./commands");
-    for(const folder of commandFolders) {  // For each folder...
-        const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));  // Load that folder
-		console.log(" -> "+folder);
-        for(const file of loadFolder) {  // For each file within the folder
-            const command = require(`./commands/${folder}/${file}`);  // Load file
-	        client.commands.set(command.data.name, command);
-			console.log("Loaded "+file);
-        }
-        
-    }
+// Load Commands //
+const commandFolders = fs.readdirSync("./commands");
+for(const folder of commandFolders) {  // For each folder...
+	const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));  // Load that folder
+	console.log(" -> "+folder);
+	for(const file of loadFolder) {  // For each file within the folder
+		const command = require(`./commands/${folder}/${file}`);  // Load file
+		client.commands.set(command.data.name, command);
+		console.log("Loaded "+file);
+	}
+	
 }
-setCommands();
 
+// Load Events //
 const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"));
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
@@ -33,6 +32,7 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
 
 // Initialize Functions //
 let f = require("./functions.js");
@@ -62,7 +62,7 @@ const { MessageEmbed } = require("discord.js");
 async function sendConsole(title, value, color, interaction, type) {
 	const errorEmbed = new MessageEmbed()
 		.setColor(color)
-		.addField(title, `\`\`\`${value}\`\`\``);
+		.addFields({ name: title, value: `\`\`\`${value}\`\`\`` });
 	if(type == "reply") {
 		await interaction.reply({embeds: [errorEmbed]});
 	}
@@ -71,7 +71,6 @@ async function sendConsole(title, value, color, interaction, type) {
 	}
 
 }
-
 
 
 // Log in and run bot

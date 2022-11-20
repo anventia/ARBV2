@@ -61,11 +61,11 @@ module.exports = {
         // Send Output //
         const inputEmbed = new MessageEmbed()
 		    .setColor(global.embedBlue)
-		    .addField(`Input (Base ${start})`, `\`\`\`js\n${value}\`\`\``);
+		    .addFields({ name: `Input (Base ${start})`, value: `\`\`\`js\n${value}\`\`\`` });
         await interaction.reply({embeds: [inputEmbed]});
         const outputEmbed = new MessageEmbed()
 		    .setColor(global.embedBlue)
-		    .addField(`Output (Base ${target})`, `\`\`\`js\n${valueTar}\`\`\``);
+		    .addFields({ name: `Output (Base ${target})`, value: `\`\`\`js\n${valueTar}\`\`\`` });
         await interaction.channel.send({embeds: [outputEmbed]});
     }
 }

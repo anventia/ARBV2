@@ -8,15 +8,23 @@ module.exports = {
 		.setName("cat")
 		.setDescription("Shows a random cat picture and cat fact!"),
 	async execute(client, interaction) {
-        let imgJSON;
         const url = "http://api.thecatapi.com/v1/images/search";
-        
-
-        console.log(imgJSON);
+        let output;
         return;
-        const catembed = new MessageEmbed()
-            .setColor(global.embedBlue)
-            .setImage(imgJSON)
-		await interaction.reply({embed: [catembed]});
+        fetch(url)
+            .then(res => res.json())
+            .then(json => { 
+                output = json;
+                console.log(output);
+
+                const catembed = new MessageEmbed()
+                .setColor(global.embedBlue)
+                //.setImage(imgJSON)
+		        
+            });
+        
+            await interaction.reply({embed: [catembed]});
+
+        
 	}
 }
