@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, DataResolver } = require("discord.js");
-const fetch = require("node-fetch");
 const { apodKey } = require("../../config.json");
 
 
@@ -11,15 +10,10 @@ module.exports = {
 	async execute(client, interaction) {
         // Gather Data //
         const url = "https://api.nasa.gov/planetary/apod?api_key="+apodKey;
-        let img = await fetch(url)
-            .then(res => res.json())
-            .then(json => { return json.hdurl; });
-        let title = await fetch(url)
-            .then(res => res.json())
-            .then(json => { return json.title; });
-        let exp = await fetch(url)
-            .then(res => res.json())
-            .then(json => { return json.explanation; });
+        let json = await f.getJSON(url);
+        let img = json.hdurl;
+        let title = json.title;
+        let exp = json.explanation;
 
 
         // Send Output //

@@ -43,10 +43,10 @@
 
     "fun": {
         "description": "Fun commands such as cat images",
-        "cat": {
-            "usage": "/cat",
-            "short": "Shows a random cat image.",
-            "long":  "Shows a random cat image."
+        "animal": {
+            "usage": "/<animal>",
+            "short": "Shows a random <animal> image.",
+            "long":  "Shows a random <animal> image. Currently there is cat, dog, fox, bird, and panda."
         },
         "apod": {
             "usage": "/apod",

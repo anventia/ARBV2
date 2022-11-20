@@ -24,7 +24,7 @@ function loadCommands() {
 }
 loadCommands();
 
-/*
+///*
 // Three specific test servers for registering commands
 const rest = new REST({ version: "9" }).setToken(token);
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
@@ -40,7 +40,7 @@ const rest3 = new REST({ version: "9" }).setToken(token);
 rest3.put(Routes.applicationGuildCommands(clientId, guildId3), { body: commands })
     .then(() => console.log("Successfully registered application commands 3."))
     .catch(console.error);
-*/
+//*/
 
 // Global deployment //
 const rest4 = new REST({ version: "9" }).setToken(token);

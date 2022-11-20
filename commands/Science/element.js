@@ -4,8 +4,13 @@ const { MessageEmbed, DataResolver } = require("discord.js");
 
 module.exports = { 
 	data: new SlashCommandBuilder()
-		.setName("cat")
-		.setDescription("Shows a random cat picture!"),
+		.setName("element")
+		.setDescription("Shows information about any element on the periodic table!")
+        .addStringOption(option => option
+            .setName("input")
+            .setDescription("Category or command to view")
+            .setRequired(false)
+        ),
 	async execute(client, interaction) {
         // Gather Data //
         const url = "http://api.thecatapi.com/v1/images/search";

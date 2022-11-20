@@ -50,10 +50,10 @@ f =  {
         return(input.length < 2 ? "0"+input : input); 
     },
 
-    getJSON: async function getJSON(index, url) {
+    getJSON: async function getJSON(url) {
         let data = fetch(url)
             .then(res => res.json())
-            .then(json => { return json[index].url; });
+            .then(json => { return json; });
         return data;
     },
 
