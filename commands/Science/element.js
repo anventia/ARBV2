@@ -20,10 +20,12 @@ module.exports = {
             "https://periodic-table-api.herokuapp.com/atomicName/",
             "https://periodic-table-api.herokuapp.com/atomicSymbol/"
         ];
+
         for(let i=0; i<3; i++) {  // Gets data depending on user input = number, name, or symbol
             data = await f.getJSON(urls[i]+option);
             if(data.message != "Not Found") break;
         }
+
         if(data.message == "Not Found") {  // Element not found!
             await f.sendMessage(`Element \`${option}\` was not found!`, global.embedRed, interaction, "reply")
             return;
@@ -34,25 +36,24 @@ module.exports = {
         const symbol = data.symbol;
         const number = data.atomicNumber;
         const name = data.name;
-        const color = data.cpkHexColor;
+        const color = data.cpkHexColor == "" ? global.embedBlue : data.cpkHexColor;
         const group = await f.capitalize(data.groupBlock);
 
         const mass = parseFloat(data.atomicMass).toFixed(2);
-        const density = data.density;
+        const density = data.density == "" ? "Unknown" : data.density;
         let melt = (parseInt(data.meltingPoint)-273.15).toFixed(2)+"°C";
         let boil = (parseInt(data.boilingPoint)-273.15).toFixed(2)+"°C";
-        if(melt+"" == "NaN°C") melt = "None";
-        if(boil+"" == "NaN°C") boil = "None";
+        if(melt+"" == "NaN°C") { melt = "None" };
+        if(boil+"" == "NaN°C") { boil = "None" };
 
         const protons = number;
         const electrons = number;
         const neutrons = Math.round(parseFloat(mass) - parseFloat(number));
         
         const charges = data.oxidationStates == "" ? "None" : data.oxidationStates;
-        const state = await f.capitalize(data.standardState);
-        const eNeg =  data.electronegativity == "" ? "None" : data.electronegativity;
+        const state = data.standardState == "" ? "Unknown" : await f.capitalize(data.standardState);
+        const eNeg = data.electronegativity == "" ? "None" : data.electronegativity;
         const config = data.electronicConfiguration;
-
         const year = data.yearDiscovered;
 
 

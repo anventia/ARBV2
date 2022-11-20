@@ -29,10 +29,11 @@ module.exports = {
         } catch(err) {
             const replyEmbed = new MessageEmbed()
             .setColor(global.embedRed)
-            .addFields({ name: "Input:", value: `\`\`\`${input}\`\`\`` })
-            .addFields({ name: "Output:", value: `\`\`\`Error: Invalid equation!\`\`\`` })
+            .addFields(
+                { name: "Input:", value: `\`\`\`${input}\`\`\`` },
+                { name: "Output:", value: `\`\`\`Error: Invalid equation!\`\`\`` }
+            )
 		    await interaction.reply({embeds: [replyEmbed]});
-            console.log(err);
             return;
         }
 
