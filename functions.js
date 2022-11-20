@@ -1,6 +1,9 @@
 // General-use Functions //
 const { MessageEmbed } = require("discord.js");
 const https = require("https");
+const fetch = require("node-fetch");
+const { resolve } = require("path");
+
 
 f =  {
     sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
@@ -45,6 +48,18 @@ f =  {
 
     twoDigits: async function twoDigits(input) {  // 6 -> 06, 12 -> 12
         return(input.length < 2 ? "0"+input : input); 
+    },
+
+    getJSON: async function getJSON(index, url) {
+        let data = fetch(url)
+            .then(res => res.json())
+            .then(json => { return json[index].url; });
+        return data;
+    },
+
+    test: async function test(t) {
+        return t;
     }
 
+    
 }

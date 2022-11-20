@@ -41,11 +41,26 @@
     },
 
 
+    "fun": {
+        "description": "Fun commands such as cat images",
+        "cat": {
+            "usage": "/cat",
+            "short": "Shows a random cat image.",
+            "long":  "Shows a random cat image."
+        },
+        "apod": {
+            "usage": "/apod",
+            "short": "Shows the NASA Astronomy Picture of the Day.",
+            "long":  "Shows the NASA Astronomy Picture of the Day."
+        }
+    },
+
+
     "other": {
         "description": "Other commands",
         "time": {
             "usage": "/time",
-            "short": "Gets time and date",
+            "short": "Gets time and date.",
             "long":  "Gets time and date in UTC, will add timezone feature later."
         }
     }

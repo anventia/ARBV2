@@ -13,7 +13,8 @@ module.exports = {
             .setRequired(false)
         ),
         async execute(client, interaction) {
-            const option = interaction.options.getString("input").toLowerCase();            
+            let option;
+            try { option = interaction.options.getString("input").toLowerCase(); } catch(err) {};      
             const helpJSON = JSON.parse(FileSystem.readFileSync(helpPath));  // help.json 
             
             
