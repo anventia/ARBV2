@@ -59,19 +59,16 @@ module.exports = {
             .addFields(
                 { name: "Member Information:", value: "Owner:\nHuman Administrators:\nTotal Members:\nUsers:\nBots:", inline: true},
                 { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `<@${owner}>\n${admins}\n${member_count}\n${users}\n${bots}`, inline: true }
-            )
-            .addFields(
+                { name: global.blank, value: `<@${owner}>\n${admins}\n${member_count}\n${users}\n${bots}`, inline: true },
+
                 { name: "Server Information:", value: "Roles:\nEmotes:", inline: true},
                 { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${roles}\n${emotes}`, inline: true }
-            )
-            .addFields(
+                { name: global.blank, value: `${roles}\n${emotes}`, inline: true },
+
                 { name: "Channel Information:", value: "Categories:\nTotal Channels:\nText Channels:\nVoice Channels:\nAFK Voice Channel:", inline: true},
                 { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true }
-            )
-            .addFields(
+                { name: global.blank, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true },
+
                 { name: "Other Information:", value: "ID:\nCreation Date\nBot Join Date:", inline: true},
                 { name: global.blank, value: global.blank, inline: true},
                 { name: global.blank, value: `${id}\n${created_year} / ${created_month} / ${created_date}\n${joined_year} / ${joined_month} / ${joined_date}`, inline: true }

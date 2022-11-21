@@ -21,12 +21,14 @@ module.exports = {
             "https://periodic-table-api.herokuapp.com/atomicSymbol/"
         ];
 
-        for(let i=0; i<3; i++) {  // Gets data depending on user input = number, name, or symbol
+        // Gets data depending on user input = number, name, or symbol
+        for(let i=0; i<3; i++) {  
             data = await f.getJSON(urls[i]+option);
             if(data.message != "Not Found") break;
         }
 
-        if(data.message == "Not Found") {  // Element not found!
+        // Element not found!
+        if(data.message == "Not Found") {  
             await f.sendMessage(`Element \`${option}\` was not found!`, global.embedRed, interaction, "reply")
             return;
         }

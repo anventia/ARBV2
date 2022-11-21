@@ -69,7 +69,9 @@ module.exports = {
                     let author = "a";
                     let name1 = "b";
                     let name2 = "c";
-                    if(foundItem == "category") {  // Sets texts for category info
+                    
+                    // Sets texts for category info
+                    if(foundItem == "category") {
                         author = `Command list for category "${option[0].toUpperCase() + option.substring(1)}":`;
                         name1 = "Command:";
                         name2 = "Basic Description: (Do `/help <command>` for more info)"
@@ -82,7 +84,9 @@ module.exports = {
                                 { name: name2, value: desc, inline: true }
                             );
                     }
-                    if(foundItem == "command") {  // Sets texts for command info
+
+                    // Sets texts for command info
+                    if(foundItem == "command") { 
                         author = `Information for command "${option}":`;
                         name1 = "Usage:";
                         name2 = "Description:";

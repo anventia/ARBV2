@@ -27,7 +27,9 @@ module.exports = {
         const start  = BigInt(interaction.options.getString("start"));
         const target = BigInt(interaction.options.getString("target"));
         const numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");  // (62) All the characters used as numbers.
-        if(start < 2 || target < 2 || start > numbers.length || target > numbers.length) {  // Limit bases from 2 - [numbers]
+        
+        // Limit bases from 2 - [numbers]
+        if(start < 2 || target < 2 || start > numbers.length || target > numbers.length) {
             await interaction.reply({ content: "Error: Base value is invalid!", ephemeral: true }); return ;
         }
         if(start <= 36) { value = value.toUpperCase(); } // Automatically capitalize letters if starting base is 36 or lower
