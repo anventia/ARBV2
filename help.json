@@ -21,6 +21,12 @@
             "usage": "/server",
             "short": "Shows information about your server.",
             "long":  "Shows information about your server, such as member, channel, role, and emoji counts, and creation date."
+        },
+
+        "user": {
+            "usage": "/user `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "short": "Shows information about a user.",
+            "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information"
         }
     },
 

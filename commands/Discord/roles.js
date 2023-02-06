@@ -15,7 +15,8 @@ module.exports = {
         let names = "";
         let output = "";
 
-        // Get roles
+        
+        // Get roles //
         for(let i of roles) {
             names += i[1]["name"] + "\n";
             if(String(output).length <= 1000)  { 

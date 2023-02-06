@@ -7,7 +7,9 @@ const matheval = (input) => {
     const math = require("mathjs");
     try {
         return String(math.evaluate(input));
-    } catch(err) { console.log("Error with calculation"); }
+    } catch(err) {
+         return String("Error with calculation");
+    }
 }
 const forkedEvaluate = branchy(matheval);
 

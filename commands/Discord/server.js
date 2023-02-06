@@ -52,7 +52,7 @@ module.exports = {
         
 
         // Send Output //
-		const serverEmbed = new MessageEmbed() 
+		const output = new MessageEmbed() 
             .setColor(global.embedBlue)
             .setTitle(`Information for "${name}"`)
             .setThumbnail(iconURL)
@@ -73,6 +73,6 @@ module.exports = {
                 { name: global.blank, value: global.blank, inline: true},
                 { name: global.blank, value: `${id}\n${created_year} / ${created_month} / ${created_date}\n${joined_year} / ${joined_month} / ${joined_date}`, inline: true }
             );
-        await interaction.reply({embeds: [serverEmbed]});
+        await interaction.reply({embeds: [output]});
 	}
 }

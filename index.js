@@ -4,7 +4,7 @@ const { Client, Collection, Intents } = require("discord.js");
 const { token } = require("./config.json");
 
 const myIntents = new Intents();
-myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS);
+myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_PRESENCES);
 const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
@@ -57,7 +57,7 @@ client.on("interactionCreate", async interaction => {
 		sendConsole("An error occured!", error, global.embedRed, interaction, "reply");  // Error handling
     }	
 });
-
+/i/////
 const { MessageEmbed } = require("discord.js");
 async function sendConsole(title, value, color, interaction, type) {
 	const errorEmbed = new MessageEmbed()
@@ -73,5 +73,5 @@ async function sendConsole(title, value, color, interaction, type) {
 }
 
 
-// Log in and run bot
+// Log in and run bot //
 client.login(token);
