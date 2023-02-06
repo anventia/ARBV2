@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
-const { e } = require("mathjs");
-const server = require("./server");
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -34,7 +33,7 @@ module.exports = {
             return;
         }
 
-        user = member.user;
+        let user = member.user;
 
 
         // Debug //
@@ -55,51 +54,44 @@ module.exports = {
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
-        let statusIcon;
-        switch(status) {
-            case "online":
-                statusIcon = "<:online:721873982927929384>"; 
-                status = "Online"; 
-                break;
-
-            case "dnd":
-                statusIcon = "<:dnd:721873982772740148>"; 
-                status = "Do Not Disturb";
-                break;
-
-            case "idle":
-                statusIcon = "<:idle:721873982613225472>"; 
-                status = "Idle";
-                break;
-
-            case "invisible":
-                statusIcon = "<:invisible:721873982894243921>"; 
-                status = "Offline";
-                break;
-                
-            case "streaming":
-                statusIcon = "<:streaming:721873982801969162>"; 
-                status = "Streaming";
-                break;
-        }
+        let ids = [
+            "721873982927929384",
+            "721873982772740148",
+            "721873982613225472",
+            "721873982894243921",
+            "721873982801969162"
+        ];
+        let statuses = [
+            "online",
+            "dnd",
+            "idle",
+            "invisible",
+            "streaming"
+        ]
+        let statusIcon = `<:${status}:${ids[statuses.indexOf(status)]}>`
+        status = (await f.capitalize(status)).replace("Dnd", "Do Not Disturb").replace("Invisible", "Offline") + "\n\n";
 
         let firstStatus = true;
-        for(let activity of member.presence.activities) {
-            switch(activity.name) {
-                case "Custom Status":
-                    let emoji = activity.emoji;
-                    if(emoji == null) emoji = "";
-                    status = `${emoji} ${activity.state}\n`;
-                    firstStatus = false;
-                    break;
-                case "Spotify":
-                    if(firstStatus) { status = ""; firstStatus = false; }
-                    status += "Listening to Spotify\n\n";
-                    break;
-                default:
-                    if(firstStatus) { status = ""; firstStatus = false; }
-                    status += `${await f.capitalize(activity.type.toLowerCase())} ${activity.name}\n\n`;
-                    break;
+        if(member.presence != null) {
+            for(let activity of member.presence.activities) {  // Loop through each activity
+                switch(activity.name) {
+                    case "Custom Status":
+                        let emoji = activity.emoji;
+                        if(emoji == null) emoji = "";
+                        status = `${emoji} ${activity.state}\n\n`;
+                        firstStatus = false;
+                        break;
+
+                    case "Spotify":
+                        if(firstStatus) { status = ""; firstStatus = false; }
+                        status += "Listening to Spotify\n\n";
+                        break;
+                        
+                    default:
+                        if(firstStatus) { status = ""; firstStatus = false; }
+                        status += `${await f.capitalize(activity.type.toLowerCase())} ${activity.name}\n\n`;
+                        break;
+                }
             }
         }
 
@@ -120,9 +112,10 @@ module.exports = {
         const output = new MessageEmbed() 
             .setColor(color)                        
             .setTitle(`Information for user ${username}`)
-            .setDescription(`${statusIcon} ${status}`)
             .setThumbnail(url)
             .addFields(
+                { name: "Status Information", value: `${statusIcon} ${status}Use </status:1072018506394116166> to see more information.`, inline: false },
+
                 { name: "Basic Information:", value: "Global Username:\nID:\nDiscord Join Date:", inline: true },
                 { name: global.blank, value: global.blank, inline: true},
                 { name: global.blank, value: `${tag}\n${id}\n${discordJoinDate}`, inline: true},
@@ -133,6 +126,6 @@ module.exports = {
             );
 
 
-		await interaction.reply({embeds: [output]})
+		await interaction.reply({embeds: [output]});
 	}
 }

@@ -29,11 +29,11 @@ module.exports = {
                 }
                 const helpEmbed = new MessageEmbed()
                     .setColor(global.embedBlue)
-                    .setTitle("List of command categories:")
+                    .setTitle("List of command categories")
                     .addFields(
                         { name: "Category:", value: categoryList, inline: true },
                         { name: global.blank, value: global.blank, inline: true },
-                        { name: "Description: (Do `/help <category>` for command lists)", value: categoryDescription, inline: true }
+                        { name: "Description (Do `/help <category>` for command lists)", value: categoryDescription, inline: true }
                     );
                 await interaction.reply({embeds: [helpEmbed]})
                 return;
@@ -73,9 +73,9 @@ module.exports = {
                     
                     // Sets texts for category info
                     if(foundItem == "category") {
-                        title = `Command list for category "${option[0].toUpperCase() + option.substring(1)}":`;
-                        name1 = "Command:";
-                        name2 = "Basic Description: (Do `/help <command>` for more info)"
+                        title = `Command list for category "${option[0].toUpperCase() + option.substring(1)}"`;
+                        name1 = "Command";
+                        name2 = "Basic Description (Do `/help <command>` for more info)"
                         helpEmbed
                             .setColor(global.embedBlue)
                             .setTitle(title)
@@ -88,9 +88,9 @@ module.exports = {
 
                     // Sets texts for command info
                     if(foundItem == "command") { 
-                        title = `Information for command "${option}":`;
-                        name1 = "Usage:";
-                        name2 = "Description:";
+                        title = `Information for command "${option}"`;
+                        name1 = "Usage";
+                        name2 = "Description";
                         helpEmbed
                             .setColor(global.embedBlue)
                             .setTitle(title)
@@ -99,12 +99,12 @@ module.exports = {
                                 { name: name2, value: desc, inline: false }
                             );
                     }
-                    await interaction.reply({embeds: [helpEmbed]})
+                    await interaction.reply({embeds: [helpEmbed]});
                 } else {  // Parameter not found
-                    await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply")
+                    await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply");
                 }
             } else {  // Parameter not found -> "description"
-                await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply")
+                await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply");
             }
         }
 }

@@ -31,6 +31,13 @@
             "usage": "/user `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows information about a user.",
             "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information"
+        },
+
+        "status": {
+            "id": "1072018506394116166",
+            "usage": "/status `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "short": "Shows status information for a user.",
+            "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity"
         }
     },
 
