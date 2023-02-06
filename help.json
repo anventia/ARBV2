@@ -73,10 +73,10 @@
     "fun": {
         "description": "Fun commands such as cat images",
         "animal": {
-            "id": "",
-            "usage": "/<animal>",
-            "short": "Shows a random '<animal>' image.",
-            "long":  "Shows a random '<animal>' image. Currently there is cat, dog, fox, bird, and panda."
+            "id": "1071993434723844136",
+            "usage": "/animal <animal>",
+            "short": "Shows a random animal image.",
+            "long":  "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda."
         }
     },
 
