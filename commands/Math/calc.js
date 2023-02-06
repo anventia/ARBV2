@@ -16,7 +16,7 @@ const forkedEvaluate = branchy(matheval);
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("calc")
-		.setDescription("Calculates math equations!")
+		.setDescription("Calculates math equations")
         .addStringOption(option => option
             .setName("input")
             .setDescription("Math input")

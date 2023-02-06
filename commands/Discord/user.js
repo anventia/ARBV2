@@ -36,7 +36,7 @@ module.exports = {
 
         user = member.user;
 
-        
+
         // Debug //
         // console.log(member);
         // console.log(user);
@@ -61,18 +61,22 @@ module.exports = {
                 statusIcon = "<:online:721873982927929384>"; 
                 status = "Online"; 
                 break;
+
             case "dnd":
                 statusIcon = "<:dnd:721873982772740148>"; 
                 status = "Do Not Disturb";
                 break;
+
             case "idle":
                 statusIcon = "<:idle:721873982613225472>"; 
                 status = "Idle";
                 break;
+
             case "invisible":
                 statusIcon = "<:invisible:721873982894243921>"; 
                 status = "Offline";
                 break;
+                
             case "streaming":
                 statusIcon = "<:streaming:721873982801969162>"; 
                 status = "Streaming";

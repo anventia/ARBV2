@@ -5,7 +5,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     data: new SlashCommandBuilder()
 		.setName("base")
-		.setDescription("Converts numbers between bases!")
+		.setDescription("Converts numbers between bases")
         .addStringOption(option => option
             .setName("value")
             .setDescription("Value to be converted")
