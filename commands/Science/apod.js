@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, DataResolver } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { apodKey } = require("../../config.json");
 
 
@@ -17,8 +16,8 @@ module.exports = {
 
 
         // Send Output //
-        const apod = new MessageEmbed()
-            .setColor(global.embedBlue)
+        const apod = new EmbedBuilder()
+            .setColor(embedBlue)
             .setTitle(title)
             .setURL("https://apod.nasa.gov/apod/astropix.html")
             .setImage(img)

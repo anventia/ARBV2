@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,8 +21,8 @@ module.exports = {
             if(String(output).length <= 1000)  { 
                 output += "<@&" + i[1]["id"] + "> ";
             } else {
-                const serverEmbed = new MessageEmbed() 
-                    .setColor(global.embedBlue)
+                const serverEmbed = new EmbedBuilder() 
+                    .setColor(embedBlue)
                     .setTitle(`Role information`)
                     .addFields(
                         { name: "List of roles", value: output, inline: true}
@@ -37,8 +36,8 @@ module.exports = {
 
 
         // Send Output //
-        const serverEmbed = new MessageEmbed() 
-            .setColor(global.embedBlue)
+        const serverEmbed = new EmbedBuilder() 
+            .setColor(embedBlue)
             .setTitle(`Role information`)
             .addFields(
                 { name: "List of roles", value: output, inline: true}

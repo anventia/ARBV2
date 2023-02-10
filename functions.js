@@ -1,5 +1,5 @@
 // General-use Functions //
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const https = require("https");
 const fetch = require("node-fetch");
 const { resolve } = require("path");
@@ -7,7 +7,7 @@ const { resolve } = require("path");
 
 f =  {
     sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
-        const errorEmbed = new MessageEmbed()
+        const errorEmbed = new EmbedBuilder()
             .setColor(color)
             .addFields({ name: title, value: `\`\`\`${value}\`\`\`` });
         if(type == "reply") {
@@ -19,7 +19,7 @@ f =  {
     },
 
     sendEmbed: async function sendEmbed(string1, string2, color, interaction, type) {  // Sends basic embed
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(color)
             .addFields({ name: string1, value: string2 });
         if(type == "reply") {
@@ -30,12 +30,12 @@ f =  {
         }
     },
 
-    sendMessage: async function sendMessage(string, color, interaction, type) {  // Sends one-line embed
-        const embed = new MessageEmbed()
+    sendMessage: async function sendMessage(string, color, interaction, type, ep) {  // Sends one-line embed
+        const embed = new EmbedBuilder()
             .setColor(color)
             .setDescription(string);
         if(type == "reply") {
-            await interaction.reply({embeds: [embed]});
+            await interaction.reply({embeds: [embed], ephemeral: ep});
         }
         if(type == "message") {
             await interaction.channel.send({embeds: [embed]});

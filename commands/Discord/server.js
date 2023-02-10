@@ -1,6 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, IntegrationApplication } = require("discord.js");
-const { Permissions } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -18,7 +16,7 @@ module.exports = {
         let owner = guild.ownerId;
         let member_count = guild.memberCount;
         let members = await guild.members.fetch();
-        let admins = members.filter(m => m.permissions.has(new Permissions(Permissions.FLAGS.ADMINISTRATOR)) === true && m.user.bot === false).size;
+        let admins = members.filter(m => m.permissions.has(PermissionsBitField.Flags.Administrator) === true && m.user.bot === false).size;
         let users  = members.filter(m => m.user.bot === false).size;
         let bots   = members.filter(m => m.user.bot === true).size;
         
@@ -30,10 +28,11 @@ module.exports = {
 
         // Channel Information //
         let all_channels = await guild.channels.fetch();
-        all_channels = all_channels.filter(c => c != null);  // Forum channels currently not supported
-        let categories     = all_channels.filter(c => c.type === "GUILD_CATEGORY").size;
-        let text_channels  = all_channels.filter(c => c.type === "GUILD_TEXT").size;
-        let voice_channels = all_channels.filter(c => c.type === "GUILD_VOICE").size;
+        console.log(all_channels)
+        all_channels = all_channels.filter(c => c != null);
+        let categories     = all_channels.filter(c => c.type == 4).size;
+        let text_channels  = all_channels.filter(c => c.type == 0).size;
+        let voice_channels = all_channels.filter(c => c.type == 2).size;
         let channels = text_channels + voice_channels;
         let afk = guild.afkChannelId;
         if(afk == null) { afk = "No AFK channel set"; }
@@ -52,26 +51,26 @@ module.exports = {
         
 
         // Send Output //
-		const output = new MessageEmbed() 
-            .setColor(global.embedBlue)
+		const output = new EmbedBuilder() 
+            .setColor(embedBlue)
             .setTitle(`Information for "${name}"`)
             .setThumbnail(iconURL)
             .addFields(
                 { name: "Member Information:", value: "Owner:\nHuman Administrators:\nTotal Members:\nUsers:\nBots:", inline: true},
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `<@${owner}>\n${admins}\n${member_count}\n${users}\n${bots}`, inline: true },
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `<@${owner}>\n${admins}\n${member_count}\n${users}\n${bots}`, inline: true },
 
                 { name: "Server Information:", value: "Roles:\nEmotes:", inline: true},
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${roles}\n${emotes}`, inline: true },
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `${roles}\n${emotes}`, inline: true },
 
                 { name: "Channel Information:", value: "Categories:\nTotal Channels:\nText Channels:\nVoice Channels:\nAFK Voice Channel:", inline: true},
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true },
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true },
 
                 { name: "Other Information:", value: "ID:\nCreation Date\nBot Join Date:", inline: true},
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${id}\n${created_year} / ${created_month} / ${created_date}\n${joined_year} / ${joined_month} / ${joined_date}`, inline: true }
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `${id}\n${created_year} / ${created_month} / ${created_date}\n${joined_year} / ${joined_month} / ${joined_date}`, inline: true }
             );
         await interaction.reply({embeds: [output]});
 	}

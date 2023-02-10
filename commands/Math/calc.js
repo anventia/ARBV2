@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const math = require("mathjs");
 const branchy = require("branchy");  // Library that runs function in seperate process
 const { string } = require("mathjs");
@@ -16,7 +15,7 @@ const forkedEvaluate = branchy(matheval);
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("calc")
-		.setDescription("Calculates math equations")
+		.setDescription("Calculates math equations.")
         .addStringOption(option => option
             .setName("input")
             .setDescription("Math input")
@@ -29,8 +28,8 @@ module.exports = {
             output = String(await forkedEvaluate(input));
             if (string(output) == "undefined") { throw "Invalid"; }
         } catch(err) {
-            const replyEmbed = new MessageEmbed()
-            .setColor(global.embedRed)
+            const replyEmbed = new EmbedBuilder()
+            .setColor(embedRed)
             .addFields(
                 { name: "Input:", value: `\`\`\`${input}\`\`\`` },
                 { name: "Output:", value: `\`\`\`Error: Invalid equation!\`\`\`` }
@@ -47,8 +46,8 @@ module.exports = {
             output += "...";
         }
 
-        const replyEmbed = new MessageEmbed()
-            .setColor(global.embedBlue)
+        const replyEmbed = new EmbedBuilder()
+            .setColor(embedBlue)
             .addFields({ name:"Input:", value: `\`\`\`js\n${input}\`\`\`` })
             .addFields({ name: "Output:", value: `\`\`\`js\n${output}\`\`\`` })
 		await interaction.reply({embeds: [replyEmbed]});

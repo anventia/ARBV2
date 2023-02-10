@@ -1,11 +1,14 @@
 // Initialize Commands / Events //
 const fs = require("fs");
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
 
-const myIntents = new Intents();
-myIntents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_PRESENCES);
-const client = new Client({ intents: myIntents });
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds, 
+	GatewayIntentBits.GuildMembers, 
+	GatewayIntentBits.GuildEmojisAndStickers, 
+	GatewayIntentBits.GuildPresences,
+],});
 
 client.commands = new Collection();
 
@@ -41,10 +44,11 @@ let f = require("./functions.js");
 
 
 // Data //
-global.iconurl = "https://i.postimg.cc/0yjbgWSX/ARBV2.png";
-global.blank = "\u200b";
-global.embedBlue = "#3D5EA4";
-global.embedRed = "#fa4d4d";
+iconURL = "https://i.postimg.cc/0yjbgWSX/ARBV2.png";
+emptyString = "\u200b";
+embedBlue = "#3D5EA4";
+embedRed = "#fa4d4d";
+embedGreen = "#4eea11";
 
 
 // Slash Commands //
@@ -56,13 +60,13 @@ client.on("interactionCreate", async interaction => {
 		await command.execute(client, interaction);  // Executes the command
 	} catch (error) {
 		console.error(error);
-		sendConsole("An error occured!", error, global.embedRed, interaction, "reply");  // Error handling
+		sendConsole("An error occured!", error, embedRed, interaction, "reply");  // Error handling
     }	
 });
 /i/////
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 async function sendConsole(title, value, color, interaction, type) {
-	const errorEmbed = new MessageEmbed()
+	const errorEmbed = new EmbedBuilder()
 		.setColor(color)
 		.addFields({ name: title, value: `\`\`\`${value}\`\`\`` });
 	if(type == "reply") {

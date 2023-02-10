@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, DataResolver } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 
 module.exports = { 
@@ -43,15 +42,15 @@ module.exports = {
                 break;
 
             default:
-                await f.sendMessage("Error: Animal not found!", global.embedRed, interaction, "reply");
+                await f.sendMessage("Error: Animal not found!", embedRed, interaction, "reply", true);
                 return;
 
         }
 
 
         // Send Output //
-        const catembed = new MessageEmbed()
-            .setColor(global.embedBlue)
+        const catembed = new EmbedBuilder()
+            .setColor(embedBlue)
             .setImage(img);
         await interaction.reply({embeds: [catembed]});
 	}

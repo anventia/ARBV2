@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, DataResolver } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 
 module.exports = { 
@@ -29,7 +28,7 @@ module.exports = {
 
         // Element not found!
         if(data.message == "Not Found") {  
-            await f.sendMessage(`Element \`${option}\` was not found!`, global.embedRed, interaction, "reply")
+            await f.sendMessage(`Element \`${option}\` was not found!`, embedRed, interaction, "reply", true);
             return;
         }
 
@@ -38,7 +37,7 @@ module.exports = {
         const symbol = data.symbol;
         const number = data.atomicNumber;
         const name = data.name;
-        const color = data.cpkHexColor == "" ? global.embedBlue : data.cpkHexColor;
+        const color = data.cpkHexColor == "" ? embedBlue : data.cpkHexColor;
         const group = await f.capitalize(data.groupBlock);
 
         const mass = parseFloat(data.atomicMass).toFixed(2);
@@ -60,7 +59,7 @@ module.exports = {
 
 
         // Send Output //
-        const element = new MessageEmbed()
+        const element = new EmbedBuilder()
             .setColor(color)
             .setTitle(name)
             .setURL("https://en.wikipedia.org/wiki/"+name)

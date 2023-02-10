@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 
 module.exports = {
@@ -61,12 +60,12 @@ module.exports = {
 
 
         // Send Output //
-        const inputEmbed = new MessageEmbed()
-		    .setColor(global.embedBlue)
+        const inputEmbed = new EmbedBuilder()
+		    .setColor(embedBlue)
 		    .addFields({ name: `Input (Base ${start})`, value: `\`\`\`js\n${value}\`\`\`` });
         await interaction.reply({embeds: [inputEmbed]});
-        const outputEmbed = new MessageEmbed()
-		    .setColor(global.embedBlue)
+        const outputEmbed = new EmbedBuilder()
+		    .setColor(embedBlue)
 		    .addFields({ name: `Output (Base ${target})`, value: `\`\`\`js\n${valueTar}\`\`\`` });
         await interaction.channel.send({embeds: [outputEmbed]});
     }

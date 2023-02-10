@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 
 module.exports = {
@@ -29,7 +28,7 @@ module.exports = {
         }
 
         if(member == null) {
-            await f.sendMessage("Error: User not found!", global.embedRed, interaction, "reply");
+            await f.sendMessage("Error: User not found!", embedRed, interaction, "reply", true);
             return;
         }
 
@@ -68,12 +67,12 @@ module.exports = {
   
 
         let outputs = [];
-        let output = new MessageEmbed()
+        let output = new EmbedBuilder()
             .setColor(statusColor)
             .setTitle(`Status Infornation for user ${username}`)
             .setThumbnail(url)
             .addFields(
-                { name: global.blank, value: `${statusIcon} ${status}`, inline: false }
+                { name: emptyString, value: `${statusIcon} ${status}`, inline: false }
             );
         outputs.push(output);
         
@@ -87,12 +86,12 @@ module.exports = {
                         if(emoji == null) emoji = "";
                         status = `${emoji} ${activity.state}\n`;
 
-                        output = new MessageEmbed()
+                        output = new EmbedBuilder()
                             .setColor(statusColor)
                             .setTitle(`Status Infornation for user ${username}`)
                             .setThumbnail(url)
                             .addFields(
-                                { name: global.blank, value: `${statusIcon} ${status}`, inline: false }
+                                { name: emptyString, value: `${statusIcon} ${status}`, inline: false }
                             );
                         outputs = [];
                         outputs.push(output);
@@ -105,7 +104,7 @@ module.exports = {
                         let artist = activity.state;
                         let album = activity.assets.largeText;
 
-                        output = new MessageEmbed()
+                        output = new EmbedBuilder()
                             .setColor("#1ed760")
                             .setThumbnail(img)
                             .addFields(
@@ -116,7 +115,7 @@ module.exports = {
                     
                     default:
                         img = activity.assets.largeImageURL();
-                        output = new MessageEmbed()
+                        output = new EmbedBuilder()
                             .setColor("#1ed760")
                             .setThumbnail(img)
                             .addFields(

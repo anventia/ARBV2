@@ -1,11 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("user")
-		.setDescription("Gets information about specified user")
+		.setDescription("Gets information about specified user.")
         .addStringOption(option => option
             .setName("user")
             .setDescription("Specify a user")
@@ -29,7 +28,7 @@ module.exports = {
         }
 
         if(member == null) {
-            await f.sendMessage("Error: User not found!", global.embedRed, interaction, "reply");
+            await f.sendMessage("Error: User not found!", embedRed, interaction, "reply", true);
             return;
         }
 
@@ -109,7 +108,7 @@ module.exports = {
 
 
         // Sent Output //
-        const output = new MessageEmbed() 
+        const output = new EmbedBuilder() 
             .setColor(color)                        
             .setTitle(`Information for user ${username}`)
             .setThumbnail(url)
@@ -117,12 +116,12 @@ module.exports = {
                 { name: "Status Information", value: `${statusIcon} ${status}Use </status:1072018506394116166> to see more information.`, inline: false },
 
                 { name: "Basic Information:", value: "Global Username:\nID:\nDiscord Join Date:", inline: true },
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${tag}\n${id}\n${discordJoinDate}`, inline: true},
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `${tag}\n${id}\n${discordJoinDate}`, inline: true},
 
                 { name: "Server-Specific Information:", value: `Server Join Date:\nNickname:${nicknameNL}\nNumber of roles:\nTop Role:`, inline: true },
-                { name: global.blank, value: global.blank, inline: true},
-                { name: global.blank, value: `${serverJoinDate}\n${nickname}\n${numRoles}\n${topRole}`, inline: true}
+                { name: emptyString, value: emptyString, inline: true},
+                { name: emptyString, value: `${serverJoinDate}\n${nickname}\n${numRoles}\n${topRole}`, inline: true}
             );
 
 

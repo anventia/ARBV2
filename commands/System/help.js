@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const FileSystem = require("fs");
 const { helpPath } = require("../../config.json")
 
@@ -27,12 +26,12 @@ module.exports = {
                     categoryList += category[0].toUpperCase()+category.slice(1)+"\n";
                     categoryDescription += helpJSON[category]["description"]+"\n";
                 }
-                const helpEmbed = new MessageEmbed()
-                    .setColor(global.embedBlue)
+                const helpEmbed = new EmbedBuilder()
+                    .setColor(embedBlue)
                     .setTitle("List of command categories")
                     .addFields(
                         { name: "Category:", value: categoryList, inline: true },
-                        { name: global.blank, value: global.blank, inline: true },
+                        { name: emptyString, value: emptyString, inline: true },
                         { name: "Description (Do `/help <category>` for command lists)", value: categoryDescription, inline: true }
                     );
                 await interaction.reply({embeds: [helpEmbed]})
@@ -65,7 +64,7 @@ module.exports = {
 
                 // Send Output //
                 if(foundItem != "none") {  // If item is found
-                    const helpEmbed = new MessageEmbed()
+                    const helpEmbed = new EmbedBuilder()
 
                     let title = "a";
                     let name1 = "b";
@@ -77,11 +76,11 @@ module.exports = {
                         name1 = "Command";
                         name2 = "Basic Description (Do `/help <command>` for more info)"
                         helpEmbed
-                            .setColor(global.embedBlue)
+                            .setColor(embedBlue)
                             .setTitle(title)
                             .addFields(
                                 { name: name1, value: item, inline: true },
-                                { name: global.blank, value: global.blank, inline: true },
+                                { name: emptyString, value: emptyString, inline: true },
                                 { name: name2, value: desc, inline: true }
                             );
                     }
@@ -92,7 +91,7 @@ module.exports = {
                         name1 = "Usage";
                         name2 = "Description";
                         helpEmbed
-                            .setColor(global.embedBlue)
+                            .setColor(embedBlue)
                             .setTitle(title)
                             .addFields(
                                 { name: name1, value: item, inline: false },
@@ -101,10 +100,10 @@ module.exports = {
                     }
                     await interaction.reply({embeds: [helpEmbed]});
                 } else {  // Parameter not found
-                    await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply");
+                    await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, embedRed, interaction, "reply", true);
                 }
             } else {  // Parameter not found -> "description"
-                await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, global.embedRed, interaction, "reply");
+                await f.sendMessage(`Error: \`${option}\` is not a valid argument!`, embedRed, interaction, "reply", true);
             }
         }
 }
