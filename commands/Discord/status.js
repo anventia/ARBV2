@@ -111,7 +111,6 @@ module.exports = {
                             .addFields(
                                 { name: "Listening to Spotify", value: `[**${title}**](${link})\nby ${artist}\non ${album}`, inline: false }
                             );
-
                         outputs.push(output);
                         break;
                     
@@ -123,7 +122,6 @@ module.exports = {
                             .addFields(
                                 { name: `${await f.capitalize(activity.type.toLowerCase())} a Game`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
                             );
-
                         outputs.push(output);
                         break;
                 }
@@ -132,9 +130,6 @@ module.exports = {
 
 
         // Send Output //
-        for(let output of outputs) {
-            try { await interaction.reply({embeds: [output]}); }
-            catch { await interaction.channel.send({embeds: [output]}); }
-        }
+        await interaction.reply({embeds: outputs});
     }
 }
