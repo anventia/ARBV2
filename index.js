@@ -9,6 +9,7 @@ const client = new Client({ intents: myIntents });
 
 client.commands = new Collection();
 
+
 // Load Commands //
 const commandFolders = fs.readdirSync("./commands");
 for(const folder of commandFolders) {  // For each folder...
@@ -21,6 +22,7 @@ for(const folder of commandFolders) {  // For each folder...
 	}
 	
 }
+
 
 // Load Events //
 const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"));

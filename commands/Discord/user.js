@@ -41,7 +41,7 @@ module.exports = {
         // console.log(user);
         // console.log("- - - - - - - - - - - -")
         // console.log(member.presence)
-        // console.log(member.presence.activities);
+         console.log(member.presence.activities);
 
 
         // Basic Information //

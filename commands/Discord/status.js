@@ -80,7 +80,7 @@ module.exports = {
  
         if(member.presence != null) {
             for(let activity of member.presence.activities) {  // Loops through each activity
-                
+                let img;
                 switch(activity.name) {
                     case "Custom Status":
                         let emoji = activity.emoji;
@@ -99,7 +99,7 @@ module.exports = {
                         break;
 
                     case "Spotify":
-                        let img = activity.assets.largeImageURL();
+                        img = activity.assets.largeImageURL();
                         let link = `https://open.spotify.com/track/${activity.syncId}`
                         let title = activity.details;
                         let artist = activity.state;
@@ -110,6 +110,18 @@ module.exports = {
                             .setThumbnail(img)
                             .addFields(
                                 { name: "Listening to Spotify", value: `[**${title}**](${link})\nby ${artist}\non ${album}`, inline: false }
+                            );
+
+                        outputs.push(output);
+                        break;
+                    
+                    default:
+                        img = activity.assets.largeImageURL();
+                        output = new MessageEmbed()
+                            .setColor("#1ed760")
+                            .setThumbnail(img)
+                            .addFields(
+                                { name: `${await f.capitalize(activity.type.toLowerCase())} a Game`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
                             );
 
                         outputs.push(output);
