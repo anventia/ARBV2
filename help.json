@@ -41,6 +41,17 @@
         }
     },
 
+    
+    "moderation": {
+        "description": "Discord moderation tools",
+        "clear": {
+            "id": "1073709713746841681",
+            "usage": "/clear `<amount>`",
+            "short": "Clears message(s).",
+            "long": "Clears 1-100 messages.\n\n**Requires the following permissions:**\n- Manage Messages"
+        }
+    },
+
 
     "math": {
         "description": "Math and numbers",
