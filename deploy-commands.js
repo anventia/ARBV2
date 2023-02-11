@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const fs = require("fs");
-const { REST } = require("@discordjs/rest");
+const { REST } = require("discord.js");
 const { Routes } = require("discord-api-types/v9");
 const { clientId, guildId, guildId2, guildId3, token } = require("./config.json");
 // 1: ANQRDR, 2: Utility Server, 3: CF

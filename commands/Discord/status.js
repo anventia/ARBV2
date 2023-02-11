@@ -119,7 +119,7 @@ module.exports = {
                             .setColor("#1ed760")
                             .setThumbnail(img)
                             .addFields(
-                                { name: `${await f.capitalize(activity.type.toLowerCase())} a Game`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
+                                { name: `${await f.capitalize((""+activity.type).replace("0", "Playing").toLowerCase())} a Game`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
                             );
                         outputs.push(output);
                         break;

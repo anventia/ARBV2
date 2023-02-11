@@ -40,7 +40,7 @@ module.exports = {
         // console.log(user);
         // console.log("- - - - - - - - - - - -")
         // console.log(member.presence)
-         console.log(member.presence.activities);
+        // console.log(member.presence.activities);
 
 
         // Basic Information //
@@ -88,7 +88,7 @@ module.exports = {
                         
                     default:
                         if(firstStatus) { status = ""; firstStatus = false; }
-                        status += `${await f.capitalize(activity.type.toLowerCase())} ${activity.name}\n\n`;
+                        status += `${await f.capitalize((""+activity.type).replace("0", "Playing").toLowerCase())} ${activity.name}\n\n`;
                         break;
                 }
             }
