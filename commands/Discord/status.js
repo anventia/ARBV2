@@ -39,7 +39,15 @@ module.exports = {
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
-        
+
+        let types = [
+            "Playing a Game",
+            "Streaming",
+            "Listening",
+            "Watching",
+            "Custom",
+            "Competing"
+        ];
         let ids = [
             "721873982927929384",
             "721873982772740148",
@@ -119,7 +127,7 @@ module.exports = {
                             .setColor("#1ed760")
                             .setThumbnail(img)
                             .addFields(
-                                { name: `${await f.capitalize((""+activity.type).replace("0", "Playing").toLowerCase())} a Game`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
+                                { name: `${types[activity.type]}`, value: `**${activity.name}**\n${activity.details}\n${activity.state}`, inline: false }
                             );
                         outputs.push(output);
                         break;

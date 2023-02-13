@@ -53,6 +53,14 @@ module.exports = {
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
+        let types = [
+            "Playing a Game",
+            "Streaming",
+            "Listening",
+            "Watching",
+            "Custom",
+            "Competing"
+        ];
         let ids = [
             "721873982927929384",
             "721873982772740148",
@@ -88,7 +96,7 @@ module.exports = {
                         
                     default:
                         if(firstStatus) { status = ""; firstStatus = false; }
-                        status += `${await f.capitalize((""+activity.type).replace("0", "Playing").toLowerCase())} ${activity.name}\n\n`;
+                        status += `${types[activity.type]} ${activity.name}\n\n`;
                         break;
                 }
             }
