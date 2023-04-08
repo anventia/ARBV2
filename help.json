@@ -38,6 +38,20 @@
             "usage": "/status `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows status information for a user.",
             "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity"
+        },
+        
+        "avatar": {
+            "id": "1094067388112183316",
+            "usage": "/avatar `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "short": "Gets the avatar of a user.",
+            "long": "Gets the avatar of a user."
+        },
+
+        "serveravatar": {
+            "id": "1094070846320037948",
+            "usage": "/serveravatar",
+            "short": "Gets the avatar of the current server.",
+            "long": "Gets the avatar of the current server."
         }
     },
 

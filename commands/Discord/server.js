@@ -9,7 +9,7 @@ module.exports = {
         let guild = interaction.guild;
         let id = interaction.guildId;
         let name = guild.name;
-        let iconURL = guild.iconURL();
+        let iconURL = guild.iconURL({format: 'png', size: 1024});
 
 
         // Member Information //

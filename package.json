@@ -11,6 +11,7 @@
   "dependencies": {
     "branchy": "^1.0.0",
     "discord.js": "^14.7.1",
+    "discord.py": "^1.0.0",
     "dotenv": "^10.0.0",
     "fs": "^0.0.1-security",
     "mathjs": "^9.5.1",

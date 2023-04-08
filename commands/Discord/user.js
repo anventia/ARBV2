@@ -4,7 +4,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("user")
-		.setDescription("Gets information about specified user.")
+		.setDescription("Gets information about a specified user.")
         .addStringOption(option => option
             .setName("user")
             .setDescription("Specify a user")
@@ -44,7 +44,7 @@ module.exports = {
 
 
         // Basic Information //
-        let url = user.avatarURL();
+        let url = user.displayAvatarURL({format: 'png', size: 1024});
         let tag = user.tag; 
         let username = user.username;
         let id = user.id;
@@ -115,7 +115,7 @@ module.exports = {
         let nicknameNL = nickname.length >= 18 ? "\n" : "";
 
 
-        // Sent Output //
+        // Send Output //
         const output = new EmbedBuilder() 
             .setColor(color)                        
             .setTitle(`Information for user ${username}`)

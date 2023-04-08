@@ -21,7 +21,7 @@ module.exports = {
             .setTitle(title)
             .setURL("https://apod.nasa.gov/apod/astropix.html")
             .setImage(img)
-            .setFooter(exp);
+            .setFooter({text: exp});
         await interaction.reply({embeds: [apod]});    
 	}
 }
