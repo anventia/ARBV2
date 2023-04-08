@@ -28,7 +28,6 @@ module.exports = {
 
         // Channel Information //
         let all_channels = await guild.channels.fetch();
-        console.log(all_channels)
         all_channels = all_channels.filter(c => c != null);
         let categories     = all_channels.filter(c => c.type == 4).size;
         let text_channels  = all_channels.filter(c => c.type == 0).size;

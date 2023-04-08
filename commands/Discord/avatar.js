@@ -12,19 +12,18 @@ module.exports = {
         ),
 	async execute(client, interaction) {
 		// Setup //
-        let input = interaction.options.getString("user").trim();
+        let input = interaction.options.getString("user").trim().replace("<", "").replace(">", "").replace("@", "").toLowerCase();
         let member;
-        await interaction.guild.members.fetch();
         
         if(input == "me") {
-            member = interaction.guild.members.cache.get(interaction.member.id);
+            member = await interaction.guild.members.fetch(interaction.member.id);
         } else {
-
-            if(input.includes("<")) {
-                input = input.replace("<", "").replace(">", "").replace("@", "");
-            }
-
-            member = interaction.guild.members.cache.get(input);
+            member = await interaction.guild.members.fetch()
+            .then(members => {
+                let res;
+                members.each(member => { if(member.user.username.toLowerCase() == input || (member.nickname || "").toLowerCase() == input || member.id == input) res = member });
+                return res;
+            });
         }
 
         if(member == null) {
