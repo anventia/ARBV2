@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
-		.setName("base")
+		.setName("-base")
 		.setDescription("Converts numbers between bases")
         .addStringOption(option => option
             .setName("value")

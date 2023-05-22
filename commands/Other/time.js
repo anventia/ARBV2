@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("time")
+		.setName("-time")
 		.setDescription("Gets UTC time. (YYYY/MM/DD)"),
 	async execute(client, interaction) {
         const date = new Date();

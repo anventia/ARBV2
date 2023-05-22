@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("status")
+		.setName("-status")
 		.setDescription("Gets status information about a user.")
         .addStringOption(option => option
             .setName("user")

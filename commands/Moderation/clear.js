@@ -4,7 +4,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("clear")
+		.setName("-clear")
 		.setDescription("Clears a certian amount of messages from a channel. (Mod Only)")
         .addIntegerOption(option => option
             .setName("amount")

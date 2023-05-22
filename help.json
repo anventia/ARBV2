@@ -1,15 +1,15 @@
 {
     "system": {
         "description": "Bot system commands",
-        "info": {
-            "id": "1041103937173991451",
+        "-info": {
+            "id": "1110342925818269782",
             "usage": "/info",
             "short": "Shows bot information",
             "long":  "Shows bot information"
         },
 
-        "help": {
-            "id": "1041103937173991450",
+        "-help": {
+            "id": "1110342925818269781",
             "usage": "/help `<category>`\n/help `<command>`",
             "short": "Help command",
             "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command."
@@ -19,36 +19,36 @@
 
     "discord": {
         "description": "Discord-related commands",
-        "server": {
-            "id": "1041103937173991445",
+        "-server": {
+            "id": "1110342925554024461",
             "usage": "/server",
             "short": "Shows information about your server.",
             "long":  "Shows information about your server, such as member, channel, role, and emoji counts, and creation date."
         },
 
-        "user": {
-            "id": "1071932898481029130",
+        "-user": {
+            "id": "1110342925554024464",
             "usage": "/user `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows information about a user.",
             "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information"
         },
 
-        "status": {
-            "id": "1072018506394116166",
+        "-status": {
+            "id": "1110342925554024463",
             "usage": "/status `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows status information for a user.",
             "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity"
         },
         
-        "avatar": {
-            "id": "1094067388112183316",
+        "-avatar": {
+            "id": "1110342925554024458",
             "usage": "/avatar `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Gets the avatar of a user.",
             "long": "Gets the avatar of a user."
         },
 
-        "serveravatar": {
-            "id": "1094070846320037948",
+        "-serveravatar": {
+            "id": "1110342925554024462",
             "usage": "/serveravatar",
             "short": "Gets the avatar of the current server.",
             "long": "Gets the avatar of the current server."
@@ -58,8 +58,8 @@
     
     "moderation": {
         "description": "Discord moderation tools",
-        "clear": {
-            "id": "1073709713746841681",
+        "-clear": {
+            "id": "1110342925818269777",
             "usage": "/clear `<amount>`",
             "short": "Clears message(s).",
             "long": "Clears 1-100 messages.\n\n**Requires the following permissions:**\n- Manage Messages"
@@ -69,15 +69,15 @@
 
     "math": {
         "description": "Math and numbers",
-        "calc": {
-            "id": "1041103937173991447",
+        "-calc": {
+            "id": "1110342925554024467",
             "usage": "/calc `<equation>`",
             "short": "Calculates math equations",
             "long":  "Calculates `<equation>`. Things it accepts: https://mathjs.org/"
         },
 
-        "base": {
-            "id": "1041103937173991446",
+        "-base": {
+            "id": "1110342925554024466",
             "usage": "/base `<number>` `<base>` `<target>`",
             "short": "Converts numbers between bases.",
             "long":  "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110"
@@ -87,14 +87,15 @@
 
     "science": {
         "description": "Science related commands",
-        "apod": {
-            "id": "1043769786275999744",
+        "-apod": {
+            "id": "1110342925818269779",
             "usage": "/apod",
             "short": "Shows the NASA Astronomy Picture of the Day",
             "long":  "Shows the NASA Astronomy Picture of the Day"
         },
-        "element": {
-            "id": "1043977639729303602",
+
+        "-element": {
+            "id": "1110342925818269780",
             "usage": "/element `<element>`",
             "short": "Shows information about an element.",
             "long":  "Shows information about an element.\n`<element>` accepts Name, Atomic Mass, and Atomic Number."
@@ -104,8 +105,8 @@
 
     "fun": {
         "description": "Fun commands such as cat images",
-        "animal": {
-            "id": "1071993434723844136",
+        "-animal": {
+            "id": "1110342925554024465",
             "usage": "/animal <animal>",
             "short": "Shows a random animal image.",
             "long":  "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda."
@@ -115,8 +116,8 @@
 
     "other": {
         "description": "Other commands",
-        "time": {
-            "id": "1041103937173991449",
+        "-time": {
+            "id": "1110342925818269778",
             "usage": "/time",
             "short": "Gets time and date.",
             "long":  "Gets time and date in UTC, will add timezone feature later."

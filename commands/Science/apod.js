@@ -4,7 +4,7 @@ const { apodKey } = require("../../config.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("apod")
+		.setName("-apod")
 		.setDescription("Shows the NASA Astronomy Picture of the Day"),
 	async execute(client, interaction) {
         // Gather Data //

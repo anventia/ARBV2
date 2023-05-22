@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = { 
 	data: new SlashCommandBuilder()
-		.setName("element")
+		.setName("-element")
 		.setDescription("Shows information about any element on the periodic table!")
         .addStringOption(option => option
             .setName("input")

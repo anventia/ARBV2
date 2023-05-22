@@ -4,7 +4,7 @@ const { helpPath } = require("../../config.json")
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("help")
+		.setName("-help")
 		.setDescription("Help commands")
         .addStringOption(option => option
             .setName("input")

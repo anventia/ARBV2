@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("roles")
+		.setName("-roles")
 		.setDescription("Lists roles in the server."),
 	async execute(client, interaction) {
         // Gather Data //

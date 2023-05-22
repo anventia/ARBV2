@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("serveravatar")
+		.setName("-serveravatar")
 		.setDescription("Gets the avatar of the current server."),
 	async execute(client, interaction) {
         // Gather Data //

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = { 
 	data: new SlashCommandBuilder()
-		.setName("animal")
+		.setName("-animal")
 		.setDescription("Shows a random animal picture")
         .addStringOption(option => option
             .setName("animal")

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("role")
+		.setName("-role")
 		.setDescription("Gets information for a role.")
         .addStringOption(option => option
             .setName("role")

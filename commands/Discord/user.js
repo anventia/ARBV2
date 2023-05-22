@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("user")
+		.setName("-user")
 		.setDescription("Gets information about a specified user.")
         .addStringOption(option => option
             .setName("user")

@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("disc
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("server")
+		.setName("-server")
 		.setDescription("Shows server information"),
 	async execute(client, interaction) {
         // Setup //
