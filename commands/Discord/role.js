@@ -43,9 +43,9 @@ module.exports = {
             .setColor(color)
             .setTitle(`Information for role @${name}`)
             .addFields(
-                { name: "Information", value: "Role:\nColor:\nCreated On:\nPosition:\nID:", inline: true},
-                { name: emptyString, value: emptyString, inline: true},
-                { name: emptyString, value: `<@&${id}>\n${color}\n${date}\n${position}\n${id}`, inline: true}
+                { name: "Information", value: "Role:\nColor:\nCreated On:\nPosition:\nID:", inline: true },
+                { name: emptyString, value: emptyString, inline: true },
+                { name: emptyString, value: `<@&${id}>\n${color}\n${date}\n${position}\n${id}`, inline: true }
             );
         await interaction.reply({embeds: [output]});
 	}

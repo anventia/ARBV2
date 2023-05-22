@@ -103,7 +103,7 @@ module.exports = {
   
         
         // Newline modifiers // 
-        let nicknameNL = nickname.length >= 18 ? "\n" : "";
+        let nicknameNL = nickname.length >= 16 ? "\n" : "";
 
 
         // Send Output //
@@ -115,12 +115,12 @@ module.exports = {
                 { name: "Status Information", value: `${statusIcon} ${status}Use </status:1072018506394116166> to see more information.`, inline: false },
 
                 { name: "Basic Information:", value: "Global Username:\nID:\nDiscord Join Date:", inline: true },
-                { name: emptyString, value: emptyString, inline: true},
-                { name: emptyString, value: `${tag}\n${id}\n${discordJoinDate}`, inline: true},
+                { name: emptyString, value: emptyString, inline: true },
+                { name: emptyString, value: `${tag}\n${id}\n${discordJoinDate}`, inline: true },
 
                 { name: "Server-Specific Information:", value: `Server Join Date:\nNickname:${nicknameNL}\nNumber of roles:\nTop Role:`, inline: true },
-                { name: emptyString, value: emptyString, inline: true},
-                { name: emptyString, value: `${serverJoinDate}\n${nickname}\n${numRoles}\n${topRole}`, inline: true}
+                { name: emptyString, value: emptyString, inline: true },
+                { name: emptyString, value: `${serverJoinDate}\n${nickname}\n${numRoles}\n${topRole}`, inline: true }
             );
 
 

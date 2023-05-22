@@ -55,20 +55,20 @@ module.exports = {
             .setTitle(`Information for "${name}"`)
             .setThumbnail(iconURL)
             .addFields(
-                { name: "Member Information:", value: "Owner:\nHuman Administrators:\nTotal Members:\nUsers:\nBots:", inline: true},
-                { name: emptyString, value: emptyString, inline: true},
+                { name: "Member Information:", value: "Owner:\nHuman Administrators:\nTotal Members:\nUsers:\nBots:", inline: true },
+                { name: emptyString, value: emptyString, inline: true },
                 { name: emptyString, value: `<@${owner}>\n${admins}\n${member_count}\n${users}\n${bots}`, inline: true },
 
-                { name: "Server Information:", value: "Roles:\nEmotes:", inline: true},
-                { name: emptyString, value: emptyString, inline: true},
+                { name: "Server Information:", value: "Roles:\nEmotes:", inline: true },
+                { name: emptyString, value: emptyString, inline: true },
                 { name: emptyString, value: `${roles}\n${emotes}`, inline: true },
 
-                { name: "Channel Information:", value: "Categories:\nTotal Channels:\nText Channels:\nVoice Channels:\nAFK Voice Channel:", inline: true},
-                { name: emptyString, value: emptyString, inline: true},
+                { name: "Channel Information:", value: "Categories:\nTotal Channels:\nText Channels:\nVoice Channels:\nAFK Voice Channel:", inline: true },
+                { name: emptyString, value: emptyString, inline: true },
                 { name: emptyString, value: `${categories}\n${channels}\n${text_channels}\n${voice_channels}\n${afk}`, inline: true },
 
-                { name: "Other Information:", value: "ID:\nCreation Date\nBot Join Date:", inline: true},
-                { name: emptyString, value: emptyString, inline: true},
+                { name: "Other Information:", value: "ID:\nCreation Date\nBot Join Date:", inline: true },
+                { name: emptyString, value: emptyString, inline: true },
                 { name: emptyString, value: `${id}\n${created_year} / ${created_month} / ${created_date}\n${joined_year} / ${joined_month} / ${joined_date}`, inline: true }
             );
         await interaction.reply({embeds: [output]});

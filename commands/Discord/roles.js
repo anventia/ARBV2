@@ -25,7 +25,7 @@ module.exports = {
                     .setColor(embedBlue)
                     .setTitle(`Role information`)
                     .addFields(
-                        { name: "List of roles", value: output, inline: true}
+                        { name: "List of roles", value: output, inline: true }
                     );
 
                 await interaction.channel.send({embeds: [serverEmbed]});
@@ -40,7 +40,7 @@ module.exports = {
             .setColor(embedBlue)
             .setTitle(`Role information`)
             .addFields(
-                { name: "List of roles", value: output, inline: true}
+                { name: "List of roles", value: output, inline: true }
             );
 
             await interaction.reply({embeds: [serverEmbed]});

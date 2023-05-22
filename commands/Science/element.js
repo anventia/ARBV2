@@ -70,11 +70,11 @@ module.exports = {
 
                 { name: "Basic Information:", value: "Group:\nProtons:\nElectrons:\nNeutrons:\nIon Charges:", inline: true },
                 { name: "\u200b", value: `${group}\n${protons}\n${electrons}\n${neutrons}\n${charges}`, inline: true },
-                { name: "\u200b", value: "\u200b", inline: true},
+                { name: "\u200b", value: "\u200b", inline: true },
 
                 { name: "Temperature Information:", value: "Melting Point:\nBoiling Point:\nStandard State:", inline: true },
-                { name: "\u200b", value: `${melt}\n${boil}\n${state}`, inline: true},
-                { name: "\u200b", value: "\u200b", inline: true},
+                { name: "\u200b", value: `${melt}\n${boil}\n${state}`, inline: true },
+                { name: "\u200b", value: "\u200b", inline: true },
 
                 { name: "Other Information:", value: "Density:\nElectron Configuration:\nElectronegativity:\nYear Discovered:", inline: true },
                 { name: "\u200b", value: `${density}\n${config}\n${eNeg}\n${year}`, inline: true },
