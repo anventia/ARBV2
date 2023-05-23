@@ -1,15 +1,25 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "role";
+const description = "Gets information for a role.";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description)
+    .addStringOption(option => option
+        .setName("role")
+        .setDescription("Specify a role")
+        .setRequired(true)
+    );
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-role")
-		.setDescription("Gets information for a role.")
-        .addStringOption(option => option
-            .setName("role")
-            .setDescription("Specify a role")
-            .setRequired(true)
-        ),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
 		// Setup //
         let input = interaction.options.getString("role").trim().replace("<", "").replace(">", "").replace("@", "").replace("&", "").toLowerCase();

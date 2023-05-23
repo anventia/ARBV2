@@ -1,15 +1,25 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "element";
+const description = "Shows information about any element on the periodic table!";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description)
+    .addStringOption(option => option
+        .setName("input")
+        .setDescription("Element input")
+        .setRequired(true)
+    );
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
 module.exports = { 
-	data: new SlashCommandBuilder()
-		.setName("-element")
-		.setDescription("Shows information about any element on the periodic table!")
-        .addStringOption(option => option
-            .setName("input")
-            .setDescription("Element input")
-            .setRequired(true)
-        ),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
         // Process Input //
         let option = interaction.options.getString("input");

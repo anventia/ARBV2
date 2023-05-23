@@ -1,16 +1,25 @@
 const { SlashCommandBuilder, PermissionsBitField } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
 
+// Command Data
+const name = "clear";
+const description = "Clears a certian amount of messages from a channel. (Mod Only)";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description)
+    .addIntegerOption(option => option
+        .setName("amount")
+        .setDescription("Amount of messages to clear. [0 < n <= 100]")
+        .setRequired(true)
+    );
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-clear")
-		.setDescription("Clears a certian amount of messages from a channel. (Mod Only)")
-        .addIntegerOption(option => option
-            .setName("amount")
-            .setDescription("Amount of messages to clear. [0 < n <= 100]")
-            .setRequired(true)
-        ),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
         let amount = interaction.options.getInteger("amount");
         if(amount > 100 || amount < 1) {

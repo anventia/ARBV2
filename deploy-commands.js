@@ -13,11 +13,10 @@ console.log(commandFolders);
 function loadCommands() {
     for(const folder of commandFolders) {  // For each folder...
         const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));  // Load that folder
-
         for(const file of loadFolder) {  // For each file within the folder
             const command = require(`./commands/${folder}/${file}`);  // Load file
 	        commands.push(command.data.toJSON());
-
+            try { commands.push(command.alias.toJSON()) } catch(err) {};
         }
         
     }

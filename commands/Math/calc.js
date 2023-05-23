@@ -1,4 +1,21 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "calc";
+const description = "Calculates math equations.";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description)
+    .addStringOption(option => option
+        .setName("input")
+        .setDescription("Math input")
+        .setRequired(true)
+    );
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
+
+// Command-Specific Data
 const math = require("mathjs");
 const branchy = require("branchy");  // Library that runs function in seperate process
 const { string } = require("mathjs");
@@ -12,15 +29,11 @@ const matheval = (input) => {
 }
 const forkedEvaluate = branchy(matheval);
 
+
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-calc")
-		.setDescription("Calculates math equations.")
-        .addStringOption(option => option
-            .setName("input")
-            .setDescription("Math input")
-            .setRequired(true)
-        ),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
         const input = interaction.options.getString("input");
         let output = "";

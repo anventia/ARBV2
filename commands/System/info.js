@@ -1,9 +1,19 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "info";
+const description = "Shows bot information";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description);
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-info")
-		.setDescription("Shows bot information"),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
 		const infoEmebed = new EmbedBuilder() 
             .setColor(embedBlue)

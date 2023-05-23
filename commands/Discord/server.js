@@ -1,9 +1,20 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "server";
+const description = "Shows server information.";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description);
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
+
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-server")
-		.setDescription("Shows server information"),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
         // Setup //
         let guild = interaction.guild;

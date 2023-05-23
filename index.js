@@ -21,6 +21,7 @@ for(const folder of commandFolders) {  // For each folder...
 	for(const file of loadFolder) {  // For each file within the folder
 		const command = require(`./commands/${folder}/${file}`);  // Load file
 		client.commands.set(command.data.name, command);
+		try { client.commands.set(command.alias.name, command); } catch(err) {};
 		console.log("Loaded "+file);
 	}
 	
@@ -63,7 +64,7 @@ client.on("interactionCreate", async interaction => {
 		sendConsole("An error occured!", error, embedRed, interaction, "reply");  // Error handling
     }	
 });
-/i/////
+
 const { EmbedBuilder } = require("discord.js");
 async function sendConsole(title, value, color, interaction, type) {
 	const errorEmbed = new EmbedBuilder()

@@ -1,25 +1,35 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "base";
+const description = "Converts numbers between bases";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description)
+    .addStringOption(option => option
+        .setName("value")
+        .setDescription("Value to be converted")
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName("start")
+        .setDescription("Starting base (2-62)")
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName("target")
+        .setDescription("Target base(2-62)")
+        .setRequired(true)
+    );
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
 module.exports = {
-    data: new SlashCommandBuilder()
-		.setName("-base")
-		.setDescription("Converts numbers between bases")
-        .addStringOption(option => option
-            .setName("value")
-            .setDescription("Value to be converted")
-            .setRequired(true)
-        )
-        .addStringOption(option => option
-            .setName("start")
-            .setDescription("Starting base (2-62)")
-            .setRequired(true)
-        )
-        .addStringOption(option => option
-            .setName("target")
-            .setDescription("Target base(2-62)")
-            .setRequired(true)
-        ),
+    data: commandData,
+    alias: aliasData,
+
     async execute(client, interaction) {
         // Setup //
         let value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs

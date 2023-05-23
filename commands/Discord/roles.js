@@ -1,9 +1,20 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const _ = require('lodash');
+const { prefix } = require("../../config.json");
+
+// Command Data
+const name = "roles";
+const description = "Lists roles in the server.";
+const commandData = new SlashCommandBuilder()
+    .setName(name)
+    .setDescription(description);
+const aliasData = _.cloneDeep(commandData).setName(prefix+name);
+
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("-roles")
-		.setDescription("Lists roles in the server."),
+	data: commandData,
+    alias: aliasData,
+
 	async execute(client, interaction) {
         // Gather Data //
         const numRoles = 30;  // Number of roles per page
