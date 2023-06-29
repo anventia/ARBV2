@@ -8,7 +8,7 @@ const description = "Gets status information about a user.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
     .setDescription(description)
-    .addStringOption(option => option
+    .addUserOption(option => option
         .setName("user")
         .setDescription("Specify a user")
         .setRequired(true)
@@ -22,27 +22,8 @@ module.exports = {
 
 	async execute(client, interaction) {
         // Setup //
-        let input = interaction.options.getString("user").trim();
-        let member;
-        await interaction.guild.members.fetch();
-        
-        if(input == "me") {
-            member = interaction.guild.members.cache.get(interaction.member.id);
-        } else {
-
-            if(input.includes("<")) {
-                input = input.replace("<", "").replace(">", "").replace("@", "");
-            }
-
-            member = interaction.guild.members.cache.get(input);
-        }
-
-        if(member == null) {
-            await f.sendMessage("Error: User not found!", embedRed, interaction, "reply", true);
-            return;
-        }
-
-        let user = member.user;
+        let user = interaction.options.getUser("user");
+        let member = await interaction.guild.members.fetch(user.id);
         let username = user.username;
         let url = user.avatarURL();
 

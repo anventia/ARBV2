@@ -8,7 +8,7 @@ const description = "Gets the avatar of a user."
 const commandData = new SlashCommandBuilder()
     .setName(name)
     .setDescription(description)
-    .addStringOption(option => option
+    .addUserOption(option => option
         .setName("user")
         .setDescription("Specify a user")
         .setRequired(true)
@@ -22,26 +22,8 @@ module.exports = {
 
 	async execute(client, interaction) {
 		// Setup //
-        let input = interaction.options.getString("user").trim().replace("<", "").replace(">", "").replace("@", "").toLowerCase();
-        let member;
-        
-        if(input == "me") {
-            member = await interaction.guild.members.fetch(interaction.member.id);
-        } else {
-            member = await interaction.guild.members.fetch()
-            .then(members => {
-                let res;
-                members.each(member => { if(member.user.username.toLowerCase() == input || (member.nickname || "").toLowerCase() == input || member.id == input) res = member });
-                return res;
-            });
-        }
-
-        if(member == null) {
-            await f.sendMessage("Error: User not found!", embedRed, interaction, "reply", true);
-            return;
-        }
-
-        let user = member.user;
+        let user = interaction.options.getUser("user");
+        let member = await interaction.guild.members.fetch(user.id);
 
 
         // Gather Data //
