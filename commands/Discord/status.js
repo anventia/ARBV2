@@ -75,7 +75,8 @@ module.exports = {
             );
         outputs.push(output);
         
- 
+        
+        // Gather Activity Data //
         if(member.presence != null) {
             for(let activity of member.presence.activities) {  // Loops through each activity
                 let img;
@@ -97,7 +98,9 @@ module.exports = {
                         break;
 
                     case "Spotify":
+                        console.log(activity);
                         img = activity.assets.largeImageURL();
+                        console.log(activity.assets.smallImageURL());
                         let link = `https://open.spotify.com/track/${activity.syncId}`
                         let title = activity.details;
                         let artist = activity.state;
