@@ -16,6 +16,18 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
+
+		/*
+		Tags.create({
+			server: interaction.guildId,
+			cmdUsage: {},
+			warnings: {},
+			warnChannel: null
+		})
+		*/
+		//await Tags.update({ warnChannel: 1086635367555403850 }, { where: { server: interaction.guildId } })
+
+
 		const testEmbed = new EmbedBuilder()
 			.setColor(embedBlue)
 			.setTitle("test")

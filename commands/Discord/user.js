@@ -87,15 +87,15 @@ module.exports = {
 
         
         // Server-Specific Information //
-        let color = member.displayHexColor;
-        let serverJoinDate = member.joinedAt.toString().split(" ").slice(0, 4).join(" ");
-        let nickname = member.displayName;
-        let numRoles = member._roles.length;
-        let topRole = member.roles.highest;
+        const color = member.displayHexColor;
+        const serverJoinDate = member.joinedAt.toString().split(" ").slice(0, 4).join(" ");
+        const nickname = member.displayName;
+        const numRoles = member._roles.length;
+        const topRole = member.roles.highest;
   
         
         // Newline modifiers // 
-        let nicknameNL = nickname.length >= 22 ? "\n" : "";
+        const nicknameNL = nickname.length >= 22 ? "\n" : "";
 
 
         // Send Output //
@@ -104,7 +104,7 @@ module.exports = {
             .setTitle(`Information for user ${username}`)
             .setThumbnail(url)
             .addFields(
-                { name: "Status Information", value: `${statusIcon} ${status}*Use </status:1110431081213198384> to see more information.*`, inline: false },
+                { name: "Status Information", value: `${statusIcon} ${status}*Use </status:${commandIds["status"]}> to see more information.*`, inline: false },
 
                 { name: "Basic Information:", value: "Global Username:\nDisplay Name:\nID:\nDiscord Join Date:", inline: true },
                 { name: emptyString, value: emptyString, inline: true },

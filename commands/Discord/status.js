@@ -115,7 +115,7 @@ module.exports = {
                     
                     default:
                         try { img = activity.assets.largeImageURL(); }
-                        catch(err) { img = "" };
+                        catch(err) { img = "https://i.postimg.cc/L8Yzyf59/discord-Missing-Game.png" };
                         output = new EmbedBuilder()
                             .setColor("#1ed760")
                             .setThumbnail(img)

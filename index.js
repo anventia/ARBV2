@@ -59,9 +59,9 @@ for (const file of eventFiles) {
 client.on('guildCreate', (guild) => {
 	Tags.create({
 		server: guild.id,
-		cmdUsage: "{}",
-		warnings: "{}",
-		warnChannel: ""
+		cmdUsage: {},
+		warnings: {},
+		warnChannel: null
 	})
 })
 
