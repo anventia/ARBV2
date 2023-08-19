@@ -22,16 +22,16 @@ module.exports = {
 
 	async execute(client, interaction) {
         // Setup //
-        let user = interaction.options.getUser("user");
-        let member = await interaction.guild.members.fetch(user.id);
-        let username = user.username;
-        let url = user.avatarURL();
+        const user = interaction.options.getUser("user");
+        const member = await interaction.guild.members.fetch(user.id);
+        const username = user.username;
+        const url = user.avatarURL();
 
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
 
-        let types = [
+        const types = [
             "Playing a Game",
             "Streaming",
             "Listening",
@@ -39,29 +39,29 @@ module.exports = {
             "Custom",
             "Competing"
         ];
-        let ids = [
+        const ids = [
             "721873982927929384",
             "721873982772740148",
             "721873982613225472",
             "721873982894243921",
             "721873982801969162"
         ];
-        let statuses = [
+        const statuses = [
             "online",
             "dnd",
             "idle",
             "invisible",
             "streaming"
         ]
-        let statusColors = [
+        const statusColors = [
             "#43b581",
             "#ef4747",
             "#fba71b",
             "#747f8e",
             "#5a3696",
         ]
-        let statusIcon = `<:${status}:${ids[statuses.indexOf(status)]}>`
-        let statusColor = statusColors[statuses.indexOf(status)];
+        const statusIcon = `<:${status}:${ids[statuses.indexOf(status)]}>`
+        const statusColor = statusColors[statuses.indexOf(status)];
         status = (await f.capitalize(status)).replace("Dnd", "Do Not Disturb").replace("Invisible", "Offline");
   
 
@@ -99,10 +99,10 @@ module.exports = {
 
                     case "Spotify":
                         img = activity.assets.largeImageURL();
-                        let link = `https://open.spotify.com/track/${activity.syncId}`
-                        let title = activity.details;
-                        let artist = activity.state;
-                        let album = activity.assets.largeText;
+                        const link = `https://open.spotify.com/track/${activity.syncId}`
+                        const title = activity.details;
+                        const artist = activity.state;
+                        const album = activity.assets.largeText;
 
                         output = new EmbedBuilder()
                             .setColor("#1ed760")
@@ -114,7 +114,8 @@ module.exports = {
                         break;
                     
                     default:
-                        img = activity.assets.largeImageURL();
+                        try { img = activity.assets.largeImageURL(); }
+                        catch(err) { img = "" };
                         output = new EmbedBuilder()
                             .setColor("#1ed760")
                             .setThumbnail(img)

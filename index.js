@@ -77,6 +77,18 @@ embedBlue = "#7a66c9";
 embedRed = "#fa4d4d";
 embedGreen = "#4eea11";
 
+commandIds = {};
+
+const FileSystem = require("fs");
+const { helpPath } = require("../ARBV2/config.json")
+const helpJSON = JSON.parse(FileSystem.readFileSync(helpPath));  // help.json 
+for(let category in helpJSON) {
+	for(let command in helpJSON[category]) {
+		if(command != "description") {
+			commandIds[command] = helpJSON[category][command]["id"];
+		}
+	}
+}
 
 // Slash Commands //
 client.on("interactionCreate", async interaction => {

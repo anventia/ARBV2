@@ -17,9 +17,9 @@ module.exports = {
 
 	async execute(client, interaction) {
         // Gather Data //
-        let guild = interaction.guild;
-        let name = guild.name;
-        let url = guild.iconURL({format: 'png', size: 1024});
+        const guild = interaction.guild;
+        const name = guild.name;
+        const url = guild.iconURL({format: 'png', size: 1024});
 
 
         // Send Output //

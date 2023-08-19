@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
@@ -7,7 +7,22 @@ const name = "warn";
 const description = "Warn a user. (Moderator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description);
+    .setDescription(description)
+    .addUserOption(option => option
+        .setName("user")
+        .setDescription("Specify a user")
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName("reason")
+        .setDescription("Reason for warn")
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName("id")
+        .setDescription("ID of offending message (optional)")
+        .setRequired(false)
+    );  
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
@@ -23,10 +38,13 @@ module.exports = {
 
         const tag = await Tags.findOne({ where: { server: interaction.guildId } });
         let chId = tag.get("warnChannel");
-        if(chId == "") {
-            await f.sendMessage("No warning channel set! Use /config to set it!", embedRed, interaction, "reply", true);
+        if(chId == "") {    
+            await f.sendMessage(`No warning channel set! Use </config:${commandIds["config"]}> to set it!`, embedRed, interaction, "reply", true);
             return;
         }
+
+        
+
 
         await f.sendMessage(`Warned user`, embedRed, interaction, "reply", false);
 	}

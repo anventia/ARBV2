@@ -22,14 +22,14 @@ module.exports = {
 
 	async execute(client, interaction) {
 		// Setup //
-        let user = interaction.options.getUser("user");
-        let member = await interaction.guild.members.fetch(user.id);
+        const user = interaction.options.getUser("user");
+        const member = await interaction.guild.members.fetch(user.id);
 
 
         // Gather Data //
-        let color = member.displayHexColor;
-        let url = user.displayAvatarURL({format: 'png', size: 1024});
-        let username = user.username;
+        const color = member.displayHexColor;
+        const url = user.displayAvatarURL({format: 'png', size: 1024});
+        const username = user.username;
 
 
         // Send Output //

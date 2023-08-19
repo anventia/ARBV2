@@ -17,47 +17,46 @@ module.exports = {
 
 	async execute(client, interaction) {
         // Setup //
-        let guild = interaction.guild;
-        let id = interaction.guildId;
-        let name = guild.name;
-        let iconURL = guild.iconURL({format: 'png', size: 1024});
+        const guild = interaction.guild;
+        const id = interaction.guildId;
+        const name = guild.name;
+        const iconURL = guild.iconURL({format: 'png', size: 1024});
 
 
         // Member Information //
-        let owner = guild.ownerId;
-        let member_count = guild.memberCount;
-        let members = await guild.members.fetch();
-        let admins = members.filter(m => m.permissions.has(PermissionsBitField.Flags.Administrator) === true && m.user.bot === false).size;
-        let users  = members.filter(m => m.user.bot === false).size;
-        let bots   = members.filter(m => m.user.bot === true).size;
+        const owner = guild.ownerId;
+        const member_count = guild.memberCount;
+        const members = await guild.members.fetch();
+        const admins = members.filter(m => m.permissions.has(PermissionsBitField.Flags.Administrator) === true && m.user.bot === false).size;
+        const users = members.filter(m => m.user.bot === false).size;
+        const bots = members.filter(m => m.user.bot === true).size;
         
         
         // Server Information //
-        let roles = guild.roles.cache.size;
-        let emotes = guild.emojis.cache.size;
+        const roles = guild.roles.cache.size;
+        const emotes = guild.emojis.cache.size;
 
 
         // Channel Information //
-        let all_channels = await guild.channels.fetch();
-        all_channels = all_channels.filter(c => c != null);
-        let categories     = all_channels.filter(c => c.type == 4).size;
-        let text_channels  = all_channels.filter(c => c.type == 0).size;
-        let voice_channels = all_channels.filter(c => c.type == 2).size;
-        let channels = text_channels + voice_channels;
+        const all_channels = (await guild.channels.fetch()).filter(c => c != null);
+        const categories = all_channels.filter(c => c.type == 4).size;
+        const text_channels = all_channels.filter(c => c.type == 0).size;
+        const voice_channels = all_channels.filter(c => c.type == 2).size;
+        const channels = text_channels + voice_channels;
         let afk = guild.afkChannelId;
         if(afk == null) { afk = "No AFK channel set"; }
         else { afk = "<#" + afk + ">"; } 
 
 
         // Other Information //
-        let created = new Date(guild.createdTimestamp);
-        let created_year = created.getFullYear();
-        let created_month = await f.twoDigits(created.getMonth().toString());
-        let created_date = await f.twoDigits(created.getDate().toString());
-        let joined = new Date(guild.joinedTimestamp);
-        let joined_year = joined.getFullYear();
-        let joined_month = await f.twoDigits(joined.getMonth().toString());
-        let joined_date = await f.twoDigits(joined.getDate().toString());
+        const created = new Date(guild.createdTimestamp);
+        const created_year = created.getFullYear();
+        const created_month = await f.twoDigits(created.getMonth().toString());
+        const created_date = await f.twoDigits(created.getDate().toString());
+        const joined = new Date(guild.joinedTimestamp);
+        const joined_year = joined.getFullYear();
+        const joined_month = await f.twoDigits(joined.getMonth().toString());
+        const joined_date = await f.twoDigits(joined.getDate().toString());
         
 
         // Send Output //

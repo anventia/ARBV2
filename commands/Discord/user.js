@@ -22,21 +22,21 @@ module.exports = {
 
 	async execute(client, interaction) {
         // Setup //
-        let user = interaction.options.getUser("user");
-        let member = await interaction.guild.members.fetch(user.id);
+        const user = interaction.options.getUser("user");
+        const member = await interaction.guild.members.fetch(user.id);
 
 
         // Basic Information //
-        let url = user.displayAvatarURL({format: 'png', size: 1024});
-        let display = user.displayName; 
-        let username = user.username;
-        let id = user.id;
-        let discordJoinDate = user.createdAt.toString().split(" ").slice(0, 4).join(" ");
+        const url = user.displayAvatarURL({format: 'png', size: 1024});
+        const display = user.displayName; 
+        const username = user.username;
+        const id = user.id;
+        const discordJoinDate = user.createdAt.toString().split(" ").slice(0, 4).join(" ");
 
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
-        let types = [
+        const types = [
             "Playing a Game",
             "Streaming",
             "Listening",
@@ -44,14 +44,14 @@ module.exports = {
             "Custom",
             "Competing"
         ];
-        let ids = [
+        const ids = [
             "721873982927929384",
             "721873982772740148",
             "721873982613225472",
             "721873982894243921",
             "721873982801969162"
         ];
-        let statuses = [
+        const statuses = [
             "online",
             "dnd",
             "idle",

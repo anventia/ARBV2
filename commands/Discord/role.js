@@ -22,9 +22,9 @@ module.exports = {
 
 	async execute(client, interaction) {
 		// Setup //
-        let input = interaction.options.getString("role").trim().replace("<", "").replace(">", "").replace("@", "").replace("&", "").toLowerCase();
+        const input = interaction.options.getString("role").trim().replace("<", "").replace(">", "").replace("@", "").replace("&", "").toLowerCase();
         
-        let role = await interaction.guild.roles.fetch() 
+        const role = await interaction.guild.roles.fetch() 
             .then(roles => {
                 let res; 
                 roles.each(role => { if(role.name.toLowerCase() == input || role.id == input) res = role }); 
@@ -38,12 +38,12 @@ module.exports = {
 
 
         // Gather Data //
-        let name = role.name;
-        let color = role.hexColor;
-        let date = role.createdTimestamp;
-        let position = interaction.guild.roles.cache.size - role.position;
-        let permissions = role.permissions;
-        let id = role.id;
+        const name = role.name;
+        const color = role.hexColor;
+        const date = role.createdTimestamp;
+        const position = interaction.guild.roles.cache.size - role.position;
+        const permissions = role.permissions;
+        const id = role.id;
 
         //console.log(permissions);
         

@@ -21,7 +21,7 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
-        let amount = interaction.options.getInteger("amount");
+        const amount = interaction.options.getInteger("amount");
         if(amount > 100 || amount < 1) {
             await f.sendMessage("Amount must be in range 1-100!", embedRed, interaction, "reply", true);
             return;
