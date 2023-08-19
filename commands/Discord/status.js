@@ -98,7 +98,6 @@ module.exports = {
                         break;
 
                     case "Spotify":
-                        console.log(activity);
                         img = activity.assets.largeImageURL();
                         let link = `https://open.spotify.com/track/${activity.syncId}`
                         let title = activity.details;

@@ -4,10 +4,7 @@ module.exports = {
 	name: "ready",
 	once: true,
 	execute(client) {
-		client.user.setPresence({
-			activities: [{ name: `for Slash Commands`, type: ActivityType.Watching }],
-			status: 'idle',
-		  });
+		client.user.setActivity({name: "Loading commands...", type: ActivityType.Custom})
 		console.log(`Bot Ready! Logged in as ${client.user.tag}`);
 	},
 };

@@ -2,15 +2,32 @@
 const fs = require("fs");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
+const SQL = require("sequelize");
 
 const client = new Client({ intents: [
 	GatewayIntentBits.Guilds, 
 	GatewayIntentBits.GuildMembers, 
 	GatewayIntentBits.GuildEmojisAndStickers, 
 	GatewayIntentBits.GuildPresences,
-],});
+]});
 
 client.commands = new Collection();
+
+
+// Initialize database //
+const sql = new SQL("database", "user", "password", {
+	host: "localhost",
+	dialect: "sqlite",
+	logging: false,
+	storage: "database.sqlite"
+}); 
+
+Tags = sql.define("tags", {
+	server: { type: SQL.INTEGER, unique: true },
+	cmdUsage: SQL.JSON,
+	warnings: SQL.JSON,
+	warnChannel: SQL.STRING
+})
 
 
 // Load Commands //
@@ -39,6 +56,15 @@ for (const file of eventFiles) {
 	}
 }
 
+client.on('guildCreate', (guild) => {
+	Tags.create({
+		server: guild.id,
+		cmdUsage: "{}",
+		warnings: "{}",
+		warnChannel: ""
+	})
+})
+
 
 // Initialize Functions //
 let f = require("./functions.js");
@@ -47,7 +73,7 @@ let f = require("./functions.js");
 // Data //
 iconURL = "https://i.postimg.cc/0yjbgWSX/ARBV2.png";
 emptyString = "\u200b";
-embedBlue = "#3D5EA4";
+embedBlue = "#7a66c9";
 embedRed = "#fa4d4d";
 embedGreen = "#4eea11";
 
@@ -81,4 +107,5 @@ async function sendConsole(title, value, color, interaction, type) {
 
 
 // Log in and run bot //
+Tags.sync();
 client.login(token);

@@ -4,8 +4,8 @@
         "info": {
             "id": "1110342925818269782",
             "usage": "/info",
-            "short": "Shows bot information",
-            "long":  "Shows bot information"
+            "short": "Shows bot information.",
+            "long":  "Shows bot information."
         },
 
         "help": {
@@ -13,6 +13,13 @@
             "usage": "/help `<category>`\n/help `<command>`",
             "short": "Help command",
             "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command."
+        },
+
+        "config": {
+            "id": "1142218438450872430",
+            "usage": "/config <warning channel>",
+            "short": "Configuration for bot settings.",
+            "long":  "Shows the bot's configuration, or optionally change the settings."
         }
     },
 
@@ -72,7 +79,7 @@
         "calc": {
             "id": "1110342925554024467",
             "usage": "/calc `<equation>`",
-            "short": "Calculates math equations",
+            "short": "Calculates math equations.",
             "long":  "Calculates `<equation>`. Things it accepts: https://mathjs.org/"
         },
 
@@ -90,8 +97,8 @@
         "apod": {
             "id": "1110342925818269779",
             "usage": "/apod",
-            "short": "Shows the NASA Astronomy Picture of the Day",
-            "long":  "Shows the NASA Astronomy Picture of the Day"
+            "short": "Shows the NASA Astronomy Picture of the Day.",
+            "long":  "Shows the NASA Astronomy Picture of the Day."
         },
 
         "element": {

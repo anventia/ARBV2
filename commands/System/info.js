@@ -15,10 +15,11 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
+        const url = client.user.displayAvatarURL({format: 'png', size: 1024});
 		const infoEmebed = new EmbedBuilder() 
             .setColor(embedBlue)
             .setTitle("Information page for ARB.V2")
-            .setThumbnail(iconURL)
+            .setThumbnail(url)
             .addFields(
                 { name: "Basic Info:", value: "Created On:\nVersion:\n", inline: true },
                 { name: emptyString, value: emptyString, inline: true },
