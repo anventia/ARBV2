@@ -4,7 +4,7 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "clear";
-const description = "Clears a certian amount of messages from a channel. (Mod Only)";
+const description = "Clears a certian amount of messages from a channel. (Moderator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
     .setDescription(description)
@@ -23,11 +23,11 @@ module.exports = {
 	async execute(client, interaction) {
         let amount = interaction.options.getInteger("amount");
         if(amount > 100 || amount < 1) {
-            await f.sendMessage(`Amount must be in range 1-100!`, embedRed, interaction, "reply", true);
+            await f.sendMessage("Amount must be in range 1-100!", embedRed, interaction, "reply", true);
             return;
         }
         if(!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
-            await f.sendMessage(`You are missing the Manage Messages permission!`, embedRed, interaction, "reply", true);
+            await f.sendMessage("You are missing the Manage Messages permission!", embedRed, interaction, "reply", true);
             return;
         }
 

@@ -4,7 +4,7 @@ const { prefix } = require("../../config.json");
 
 // Command Data // //
 const name = "config";
-const description = "config ";
+const description = "Bot configuration (Administrator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
     .setDescription(description)
@@ -23,7 +23,7 @@ module.exports = {
 
 	async execute(client, interaction) {
         if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-            await f.sendMessage(`You are missing the Administrator permission!`, embedRed, interaction, "reply", true);
+            await f.sendMessage("You are missing the Administrator permission!", embedRed, interaction, "reply", true);
             return;
         }
 
