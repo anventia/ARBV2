@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("disc
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "server";
 const description = "Shows server information.";
 const commandData = new SlashCommandBuilder()

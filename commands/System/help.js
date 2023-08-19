@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "help";
 const description = "Help commands.";
 const commandData = new SlashCommandBuilder()

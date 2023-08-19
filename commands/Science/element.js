@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "element";
 const description = "Shows information about any element on the periodic table!";
 const commandData = new SlashCommandBuilder()

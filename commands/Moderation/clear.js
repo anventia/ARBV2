@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "clear";
 const description = "Clears a certian amount of messages from a channel. (Mod Only)";
 const commandData = new SlashCommandBuilder()

@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "ping";
 const description = "Tests latency.";
 const commandData = new SlashCommandBuilder()

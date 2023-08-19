@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
 
-// Command Data
+// Command Data //
 const name = "time";
 const description = "Gets UTC time. (YYYY/MM/DD)";
 const commandData = new SlashCommandBuilder()
