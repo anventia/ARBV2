@@ -17,6 +17,7 @@ const commandData = new SlashCommandBuilder()
         .setName("reason")
         .setDescription("Reason for unwarn")
         .setRequired(true)
+        .setMaxLength(1024)
     );
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
@@ -55,8 +56,6 @@ module.exports = {
             }
 
             url     = warningEmbed.thumbnail["url"];
-            console.log(warningEmbed);
-            console.log(warningEmbed.thumbnail["url"]);
             user    = fields[0]["value"];
             author  = fields[1]["value"];
             channel = fields[2]["value"];
@@ -82,7 +81,7 @@ module.exports = {
 
         // Send Output //
         const edit = new EmbedBuilder()
-			.setColor(embedBlue)
+			.setColor(embedLight)
 			.setTitle(`[UNWARNED]`)
             .setThumbnail(url)
 			.addFields(
@@ -103,7 +102,7 @@ module.exports = {
         await warning.edit({embeds: [edit]});
         
         const output = new EmbedBuilder()
-            .setColor(embedBlue)
+            .setColor(embedLight)
             .addFields({ name: `Successfully unwarned user.`, value: `${emptyString}`})
             .setFooter({ text: `They now have ${numWarns-1} warning(s).` });
 	

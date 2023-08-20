@@ -73,7 +73,8 @@ let f = require("./functions.js");
 // Data //
 iconURL = "https://i.postimg.cc/0yjbgWSX/ARBV2.png";
 emptyString = "\u200b";
-embedBlue = "#7a66c9";
+embedBlue = "#9669d6";
+embedLight = "#75bee6";
 embedRed = "#fa4d4d";
 embedGreen = "#4eea11";
 

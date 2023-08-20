@@ -17,6 +17,7 @@ const commandData = new SlashCommandBuilder()
         .setName("reason")
         .setDescription("Reason for warn")
         .setRequired(true)
+        .setMaxLength(1024)
     )
     .addStringOption(option => option
         .setName("message")

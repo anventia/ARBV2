@@ -12,6 +12,8 @@ const commandData = new SlashCommandBuilder()
         .setName("amount")
         .setDescription("Amount of messages to clear. [0 < n <= 100]")
         .setRequired(true)
+        .setMinValue(1)
+        .setMaxValue(100)
     );
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
@@ -22,10 +24,6 @@ module.exports = {
 
 	async execute(client, interaction) {
         const amount = interaction.options.getInteger("amount");
-        if(amount > 100 || amount < 1) {
-            await f.sendMessage("Amount must be in range 1-100!", embedRed, interaction, "reply", true);
-            return;
-        }
         if(!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
             await f.sendMessage("You are missing the Manage Messages permission!", embedRed, interaction, "reply", true);
             return;
