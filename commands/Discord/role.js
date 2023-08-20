@@ -25,17 +25,17 @@ module.exports = {
         const role = interaction.options.getRole("role");
 
         const name = role.name;
+        const date = await f.time(new Date(role.createdTimestamp), interaction);
+        const id = role.id;
         const color = role.hexColor;
-        const date = role.createdTimestamp;
         const position = interaction.guild.roles.cache.size - role.position;
         const permissions = role.permissions;
-        const id = role.id;
 
 
         // Send Output //
         const output = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`Information for role @${name}`)
+            .setTitle(`Information for role "${name}"`)
             .addFields(
                 { name: "Information", value: "Role:\nColor:\nCreated On:\nPosition:\nID:", inline: true },
                 { name: emptyString, value: emptyString, inline: true },

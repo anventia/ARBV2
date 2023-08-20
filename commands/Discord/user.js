@@ -112,7 +112,7 @@ module.exports = {
 
                 { name: "Server-Specific Information:", value: `Server Join Date:\nNickname:${nicknameNL}\nNumber of roles:\nTop Role:`, inline: true },
                 { name: emptyString, value: emptyString, inline: true },
-                { name: emptyString, value: `${serverJoinDate}\n${nickname}\n${numRoles}\n${topRole}`, inline: true }
+                { name: emptyString, value: `${serverJoinDate}\n<@${id}>\n${numRoles}\n${topRole}`, inline: true }
             );
 
 

@@ -64,8 +64,10 @@ f =  {
         return data;
     },
 
-    test: async function test(t) {
-        return t;
+    time: async function time(date, interaction) {
+        const locale = interaction.guild.preferredLocale;
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+		return date.toLocaleString(locale, options);
     }
 
     
