@@ -52,6 +52,7 @@ module.exports = {
         } else if(option !== "description") {  // Loop through categories, then commands for info
             let item = "";
             let desc = "";
+            let perm = "";
             for(let category in helpJSON) {
                 if(category == option) {  // Option matches category
                     for(let command in helpJSON[category]) {  // Loop through each command and add to output
@@ -66,6 +67,7 @@ module.exports = {
                         if(command == option && command != "description") {  // Command matches category
                             item = helpJSON[category][command]["usage"];  // Sets item to command usage
                             desc = helpJSON[category][command]["long"];  // Sets description to long command description
+                            perm = helpJSON[category][command]["permissions"];  // Permissions needed to use command
                             item = item.replace(`/${command}`, `</${command}:${helpJSON[category][command]["id"]}>`);
                             foundItem = "command";
                             break;
@@ -110,6 +112,12 @@ module.exports = {
                             { name: name1, value: item, inline: false },
                             { name: name2, value: desc, inline: false }
                         );
+                    if(perm != "None") { 
+                        const permList = perm.split(", ");
+                        perm = "";
+                        permList.forEach((permission) => perm += `- ${permission}\n`);
+                        helpEmbed.addFields({ name: "Requires the following permissions:", value: perm, inline: false }) 
+                    }
                 }
                 await interaction.reply({embeds: [helpEmbed]});
             } else {  // Parameter not found

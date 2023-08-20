@@ -26,7 +26,7 @@ Tags = sql.define("tags", {
 	server: { type: SQL.INTEGER, unique: true },
 	cmdUsage: SQL.JSON,
 	warnings: SQL.JSON,
-	warnChannel: SQL.STRING
+	warnChannel: SQL.TEXT
 })
 
 

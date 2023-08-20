@@ -16,7 +16,9 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
+        const locale = interaction.guild.preferredLocale;
         const date = new Date();
-		await interaction.reply(`Time is: ${date.getFullYear()}/${String(date.getMonth()+1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}  ${date.getUTCHours()}:${date.getUTCMinutes()}.${date.getUTCSeconds()} UTC`);
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+		await interaction.reply(date.toLocaleString(locale, options));
 	}
 }

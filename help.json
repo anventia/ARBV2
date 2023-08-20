@@ -5,21 +5,24 @@
             "id": "1110447023741739105",
             "usage": "/info",
             "short": "Shows bot information.",
-            "long":  "Shows bot information."
+            "long":  "Shows bot information.",
+            "permissions": "None"
         },
 
         "help": {
             "id": "1110447023741739103",
             "usage": "/help `<category>`\n/help `<command>`",
             "short": "Help command",
-            "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command."
+            "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command.",
+            "permissions": "None"
         },
 
         "config": {
             "id": "1142218438450872430",
-            "usage": "/config <warning channel>",
+            "usage": "/config `<warning channel>`",
             "short": "Configuration for bot settings.",
-            "long":  "Shows the bot's configuration, or optionally change the settings."
+            "long":  "Shows the bot's configuration, or optionally change the settings.",
+            "permissions": "Administrator"
         }
     },
 
@@ -30,35 +33,40 @@
             "id": "1110431081213198380",
             "usage": "/server",
             "short": "Shows information about your server.",
-            "long":  "Shows information about your server, such as member, channel, role, and emoji counts, and creation date."
+            "long":  "Shows information about your server, such as member, channel, role, and emoji counts, and creation date.",
+            "permissions": "None"
         },
 
         "user": {
             "id": "1110431081389371452",
             "usage": "/user `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows information about a user.",
-            "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information"
+            "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information",
+            "permissions": "None"
         },
 
         "status": {
             "id": "1110431081213198384",
             "usage": "/status `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Shows status information for a user.",
-            "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity"
+            "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity",
+            "permissions": "None"
         },
         
         "avatar": {
             "id": "1110426446784106546",
             "usage": "/avatar `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
             "short": "Gets the avatar of a user.",
-            "long": "Gets the avatar of a user."
+            "long": "Gets the avatar of a user.",
+            "permissions": "None"
         },
 
         "serveravatar": {
             "id": "1110431081213198382",
             "usage": "/serveravatar",
             "short": "Gets the avatar of the current server.",
-            "long": "Gets the avatar of the current server."
+            "long": "Gets the avatar of the current server.",
+            "permissions": "None"
         }
     },
 
@@ -68,8 +76,25 @@
         "clear": {
             "id": "1110447023339077666",
             "usage": "/clear `<amount>`",
-            "short": "Clears message(s).",
-            "long": "Clears 1-100 messages.\n\n**Requires the following permissions:**\n- Manage Messages"
+            "short": "Clears messages.",
+            "long": "Clears 1-100 messages.",
+            "permissions": "Manage Messages"
+        },
+        
+        "warn": {
+            "id": "1142276731479277708",
+            "usage": "/warn `<user>` `<reason>` `<message>`",
+            "short": "Warning system for moderation",
+            "long": "Warns a user for a specified `<reason>`.\n(Optional) Copy the offending message link into `<message>`.",
+            "permissions": "Manage Messages"
+        },
+
+        "unwarn": {
+            "id": "1142587080980037715",
+            "usage": "/unwarn `<warning>` `<reason>`",
+            "short": "Warning system for moderation",
+            "long": "Unwarns a user.\nCopy the message link of the bot's warning message into `<warning>`.",
+            "permissions": "Manage Messages"
         }
     },
 
@@ -80,14 +105,16 @@
             "id": "1110447023339077663",
             "usage": "/calc `<equation>`",
             "short": "Calculates math equations.",
-            "long":  "Calculates `<equation>`. Things it accepts: https://mathjs.org/"
+            "long":  "Calculates `<equation>`. Things it accepts: https://mathjs.org/",
+            "permissions": "None"
         },
 
         "base": {
             "id": "1110431081389371456",
             "usage": "/base `<number>` `<base>` `<target>`",
             "short": "Converts numbers between bases.",
-            "long":  "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110"
+            "long":  "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110",
+            "permissions": "None"
         }
     },
 
@@ -98,14 +125,16 @@
             "id": "1110447023339077670",
             "usage": "/apod",
             "short": "Shows the NASA Astronomy Picture of the Day.",
-            "long":  "Shows the NASA Astronomy Picture of the Day."
+            "long":  "Shows the NASA Astronomy Picture of the Day.",
+            "permissions": "None"
         },
 
         "element": {
             "id": "1110447023741739101",
             "usage": "/element `<element>`",
             "short": "Shows information about an element.",
-            "long":  "Shows information about an element.\n`<element>` accepts Name, Atomic Mass, and Atomic Number."
+            "long":  "Shows information about an element.\n`<element>` accepts Name, Atomic Mass, and Atomic Number.",
+            "permissions": "None"
         }
     },
 
@@ -116,7 +145,8 @@
             "id": "1110431081389371454",
             "usage": "/animal <animal>",
             "short": "Shows a random animal image.",
-            "long":  "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda."
+            "long":  "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda.",
+            "permissions": "None"
         }
     },
 
@@ -127,7 +157,8 @@
             "id": "1110447023339077668",
             "usage": "/time",
             "short": "Gets time and date.",
-            "long":  "Gets time and date in UTC, will add timezone feature later."
+            "long":  "Gets time and date in UTC, will add timezone feature later.",
+            "permissions": "None"
         }
     }
 }

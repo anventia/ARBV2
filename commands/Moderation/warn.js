@@ -45,17 +45,17 @@ module.exports = {
 
 
         // Data //
-        const author = interaction.member;
+        const author  = interaction.member;
         const channel = interaction.channel;
 
-        const user = interaction.options.getUser("user");
-        const member = await interaction.guild.members.fetch(user.id);
-        const url = user.displayAvatarURL({format: 'png', size: 1024});
+        const user    = interaction.options.getUser("user");
+        const member  = await interaction.guild.members.fetch(user.id);
+        const url     = user.displayAvatarURL({format: 'png', size: 1024});
         const display = user.displayName; 
-        const userId = user.id;
-        const color = member.displayHexColor;
+        const userId  = user.id;
+        const color   = member.displayHexColor;
 
-        const reason = interaction.options.getString("reason");
+        const reason  = interaction.options.getString("reason");
         let message;
         try { message = interaction.options.getString("message")}
         catch(err) {}
@@ -64,18 +64,18 @@ module.exports = {
 
         let warningsJSON = tag.get("warnings");
         let numWarns = warningsJSON[userId];
+        if(!numWarns) numWarns = 0;
 
 
         // Send Output //
         const warning = new EmbedBuilder()
-			.setColor(color)
-			.setTitle(`Warning #${numWarns}`)
+			.setColor(embedBlue)
+			.setTitle(`Warning #${numWarns+1}`)
             .setThumbnail(url)
 			.addFields(
 				{ name: "User", value: `<@${userId}>`, inline: true },
 				{ name: "Warned By", value: `${author}`, inline: true },
                 { name: "Channel", value: `${channel}`, inline: true },
-
                 { name: "Reason", value: `${reason}`, inline: false }
 			);
         if(message != null) {
@@ -85,19 +85,17 @@ module.exports = {
         await warnChannel.send({embeds: [warning]});
         
         const output = new EmbedBuilder()
-            .setColor(color)
+            .setColor(embedBlue)
             .addFields({ name: `${display} has been warned for the following reason:`, value: `${reason}`})
-            .setFooter({ text: `This is warning #${numWarns}` });
+            .setFooter({ text: `This is warning #${numWarns+1}` });
 	
 		await interaction.reply({embeds: [output]});
 
 
         // Update Database //
-        
-        if(!numWarns) numWarns = 0;
         warningsJSON[userId] = numWarns + 1;
  
         try { await Tags.update({ warnings: warningsJSON }, { where: { server: interaction.guildId } }) }
-        catch(err) { console.log(err) }
+        catch(err) { await f.sendError(err) }
 	}
 }

@@ -6,6 +6,13 @@ const { resolve } = require("path");
 
 
 f =  {
+    sendError: async function sendConsole(value, interaction) {  // Sends value in code block to Discord
+        const errorEmbed = new EmbedBuilder()
+            .setColor(embedRed)
+            .addFields({ name: "An error occured!", value: `\`\`\`${value}\`\`\`` });
+        await interaction.reply({embeds: [errorEmbed]});
+    },
+
     sendConsole: async function sendConsole(title, value, color, interaction, type) {  // Sends value in code block to Discord
         const errorEmbed = new EmbedBuilder()
             .setColor(color)
