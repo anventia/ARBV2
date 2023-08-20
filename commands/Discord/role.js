@@ -8,7 +8,7 @@ const description = "Gets information for a role.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
     .setDescription(description)
-    .addStringOption(option => option
+    .addRoleOption(option => option
         .setName("role")
         .setDescription("Specify a role")
         .setRequired(true)
@@ -21,23 +21,9 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
-		// Setup //
-        const input = interaction.options.getString("role").trim().replace("<", "").replace(">", "").replace("@", "").replace("&", "").toLowerCase();
-        
-        const role = await interaction.guild.roles.fetch() 
-            .then(roles => {
-                let res; 
-                roles.each(role => { if(role.name.toLowerCase() == input || role.id == input) res = role }); 
-                return res;
-            });
+        // Data //
+        const role = interaction.options.getRole("role");
 
-        if(role == null) {
-            await f.sendMessage("Error: Role not found!", embedRed, interaction, "reply", true);
-            return;
-        }
-
-
-        // Gather Data //
         const name = role.name;
         const color = role.hexColor;
         const date = role.createdTimestamp;
@@ -45,8 +31,6 @@ module.exports = {
         const permissions = role.permissions;
         const id = role.id;
 
-        //console.log(permissions);
-        
 
         // Send Output //
         const output = new EmbedBuilder()
