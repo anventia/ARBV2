@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
+const FileSystem = require("fs");
 
 // Command Data //
 const name = "help";
@@ -15,19 +16,16 @@ const commandData = new SlashCommandBuilder()
     );
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
-// Command-Specific Data
-const FileSystem = require("fs");
-const { helpPath } = require("../../config.json")
-
 
 module.exports = {
 	data: commandData,
     alias: aliasData,
 
     async execute(client, interaction) {
+        // Data //
         let option;
         try { option = interaction.options.getString("input").toLowerCase(); } catch(err) {};      
-        const helpJSON = JSON.parse(FileSystem.readFileSync(helpPath));  // help.json 
+        const helpJSON = JSON.parse(FileSystem.readFileSync("./help.json"));  // help.json 
         
         
         // Check Parameter //
@@ -113,9 +111,8 @@ module.exports = {
                             { name: name2, value: desc, inline: false }
                         );
                     if(perm != "None") { 
-                        const permList = perm.split(", ");
                         perm = "";
-                        permList.forEach((permission) => perm += `- ${permission}\n`);
+                        perm.split(", ").forEach((permission) => perm += `- ${permission}\n`);
                         helpEmbed.addFields({ name: "Requires the following permissions:", value: perm, inline: false }) 
                     }
                 }

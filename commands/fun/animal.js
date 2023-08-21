@@ -12,6 +12,13 @@ const commandData = new SlashCommandBuilder()
         .setName("animal")
         .setDescription("Specify an animal")
         .setRequired(true)
+        .addChoices(    
+            { name: "Cat",     value: "cat" },
+            { name: "Dog",   value: "dog" },
+            { name: "Fox",   value: "fox" },
+            { name: "Panda", value: "panda" },
+            { name: "Bird",  value: "bird" }
+        )
     );
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
@@ -25,7 +32,7 @@ module.exports = {
         let url;
         let img;
 
-        switch(interaction.options.getString("animal").toLowerCase()) {
+        switch(interaction.options.getString("animal")) {
             case "cat":
                 url = "http://api.thecatapi.com/v1/images/search";
                 img = (await f.getJSON(url))[0].url;

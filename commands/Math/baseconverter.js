@@ -13,15 +13,19 @@ const commandData = new SlashCommandBuilder()
         .setDescription("Value to be converted")
         .setRequired(true)
     )
-    .addStringOption(option => option
+    .addIntegerOption(option => option
         .setName("start")
         .setDescription("Starting base (2-62)")
         .setRequired(true)
+        .setMinValue(2)
+        .setMaxValue(62)
     )
-    .addStringOption(option => option
+    .addIntegerOption(option => option
         .setName("target")
         .setDescription("Target base(2-62)")
         .setRequired(true)
+        .setMinValue(2)
+        .setMaxValue(62)
     );
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
@@ -33,14 +37,11 @@ module.exports = {
     async execute(client, interaction) {
         // Setup //
         let value  = interaction.options.getString("value").replace(" ", "");  // Gather inputs
-        const start  = BigInt(interaction.options.getString("start"));
-        const target = BigInt(interaction.options.getString("target"));
+        const start  = BigInt(interaction.options.getInteger("start"));
+        const target = BigInt(interaction.options.getInteger("target"));
         const numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");  // (62) All the characters used as numbers.
         
-        // Limit bases from 2 - [numbers]
-        if(start < 2 || target < 2 || start > numbers.length || target > numbers.length) {
-            await interaction.reply({ content: "Error: Base value is invalid!", ephemeral: true }); return ;
-        }
+        
         if(start <= 36) { value = value.toUpperCase(); } // Automatically capitalize letters if starting base is 36 or lower
 
 
@@ -70,13 +71,12 @@ module.exports = {
 
 
         // Send Output //
-        const inputEmbed = new EmbedBuilder()
+        const output = new EmbedBuilder()
 		    .setColor(embedBlue)
-		    .addFields({ name: `Input (Base ${start})`, value: `\`\`\`js\n${value}\`\`\`` });
-        await interaction.reply({embeds: [inputEmbed]});
-        const outputEmbed = new EmbedBuilder()
-		    .setColor(embedBlue)
-		    .addFields({ name: `Output (Base ${target})`, value: `\`\`\`js\n${valueTar}\`\`\`` });
-        await interaction.channel.send({embeds: [outputEmbed]});
+		    .addFields(
+                { name: `Input (Base ${start})`, value: `\`\`\`js\n${value}\`\`\``, inline: false },
+                { name: `Output (Base ${target})`, value: `\`\`\`js\n${valueTar}\`\`\``, inline: false }
+        );
+        await interaction.reply({embeds: [output]});
     }
 }

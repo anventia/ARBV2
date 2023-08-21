@@ -117,6 +117,18 @@
             "permissions": "None"
         }
     },
+    
+
+    "string": {
+        "description": "String manipulation commands",
+        "morse": {
+            "id": "0",
+            "usage": "/morse `[encode/decode]` `<input>`",
+            "short": "Encodes / Decodes Morse Code.",
+            "long":  "Encodes a string into Morse Code, or decodes Morse Code.\nFormat: Spaces between letters, ` / ` for spaces.",
+            "permissions": "None"
+        }
+    },
 
 
     "science": {
