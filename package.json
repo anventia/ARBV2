@@ -9,6 +9,7 @@
   "author": "Anventia",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
     "branchy": "^1.0.0",
     "discord.js": "^14.13.0",
     "discord.py": "^1.0.0",

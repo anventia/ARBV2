@@ -25,7 +25,7 @@ module.exports = {
         // Data //
         let option;
         try { option = interaction.options.getString("input").toLowerCase(); } catch(err) {};      
-        const helpJSON = JSON.parse(FileSystem.readFileSync("./help.json"));  // help.json 
+        //const helpJSON = JSON.parse(FileSystem.readFileSync("./help.json"));  // help.json 
         
         
         // Check Parameter //
@@ -55,7 +55,7 @@ module.exports = {
                 if(category == option) {  // Option matches category
                     for(let command in helpJSON[category]) {  // Loop through each command and add to output
                         if(command == ("description")) { continue; }
-                        item += `</${command}:${helpJSON[category][command]["id"]}>\n`;  // Add command name to items
+                        item += `</${command}:${commandIds[command]}>\n`;  // Add command name to items
                         desc += helpJSON[category][command]["short"]+"\n";  // Add short description to descriptions
                     }
                     foundItem = "category";
