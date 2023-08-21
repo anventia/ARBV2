@@ -1,186 +1,158 @@
 {
-    "system": {
-        "description": "Bot system commands",
-        "info": {
-            "usage": "/info",
-            "short": "Shows bot information.",
-            "long":  "Shows bot information.",
-            "permissions": "None"
-        },
-
-        "help": {
-            "usage": "/help `<category>`\n/help `<command>`",
-            "short": "Help command.",
-            "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command.",
-            "permissions": "None"
-        },
-
-        "config": {
-            "usage": "/config `<warning channel>`",
-            "short": "Configuration for bot settings.",
-            "long":  "Shows the bot's configuration, or optionally change the settings.",
-            "permissions": "Administrator"
-        },
-
-        "ping": {
-            "usage": "/ping",
-            "short": "Pings the bot.",
-            "long":  "Pings the bot.",
-            "permissions": "None"
-        }
+  "system": {
+    "description": "Bot system commands",
+    "info": {
+      "usage": "/info",
+      "short": "Shows bot information.",
+      "long": "Shows bot information.",
+      "permissions": "None"
     },
-
-
-    "discord": {
-        "description": "Discord-related commands",
-        "server": {
-            "usage": "/server",
-            "short": "Shows information about your server.",
-            "long":  "Shows information about your server, such as member, channel, role, and emoji counts, and creation date.",
-            "permissions": "None"
-        },
-
-        "user": {
-            "usage": "/user `<user>`",
-            "short": "Shows information about a user.",
-            "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information",
-            "permissions": "None"
-        },
-
-        "status": {
-            "usage": "/status `<user>`.",
-            "short": "Shows status information for a user.",
-            "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity",
-            "permissions": "None"
-        },
-        
-        "avatar": {
-            "usage": "/avatar `<user>`",
-            "short": "Gets the avatar of a user.",
-            "long": "Gets the avatar of a user.",
-            "permissions": "None"
-        },
-
-        "serveravatar": {
-            "usage": "/serveravatar",
-            "short": "Gets the avatar of the current server.",
-            "long": "Gets the avatar of the current server.",
-            "permissions": "None"
-        },
-
-        "channel": {
-            "usage": "/channel `<channel>`",
-            "short": "Shows information about a channel.",
-            "long": "Shows information about a channel, including:\n-Date created\n- ID\n- Threads",
-            "permissions": "None"
-        },
-
-        "role": {
-            "usage": "/role `<role>`",
-            "short": "Shows information about a role.",
-            "long": "Shows information about a role, including:\n-Date created\n- ID\n- Color\n- Position",
-            "permissions": "None"
-        },
-
-        "roles": {
-            "usage": "/roles",
-            "short": "Lists all roles.",
-            "long": "Lists all roles.",
-            "permissions": "None"
-        }
+    "help": {
+      "usage": "/help `<category>`\n/help `<command>`",
+      "short": "Help command.",
+      "long": "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command.",
+      "permissions": "None"
     },
-
-    
-    "moderation": {
-        "description": "Discord moderation tools",
-        "clear": {
-            "usage": "/clear `<amount>`",
-            "short": "Clears messages.",
-            "long": "Clears 1-100 messages.",
-            "permissions": "Manage Messages"
-        },
-        
-        "warn": {
-            "usage": "/warn `<user>` `<reason>` `<message>`",
-            "short": "Warning system for moderation",
-            "long": "Warns a user for a specified `<reason>`.\n(Optional) Copy the offending message link into `<message>`.",
-            "permissions": "Manage Messages"
-        },
-
-        "unwarn": {
-            "usage": "/unwarn `<warning>` `<reason>`",
-            "short": "Warning system for moderation",
-            "long": "Unwarns a user.\nCopy the message link of the bot's warning message into `<warning>`.",
-            "permissions": "Manage Messages"
-        }
+    "config": {
+      "usage": "/config `<warning channel>`",
+      "short": "Configuration for bot settings.",
+      "long": "Shows the bot's configuration, or optionally change the settings.",
+      "permissions": "Administrator"
     },
-
-
-    "math": {
-        "description": "Math and numbers",
-        "calc": {
-            "usage": "/calc `<equation>`",
-            "short": "Calculates math equations.",
-            "long":  "Calculates `<equation>`. Things it accepts: https://mathjs.org/",
-            "permissions": "None"
-        },
-
-        "base": {
-            "usage": "/base `<number>` `<base>` `<target>`",
-            "short": "Converts numbers between bases.",
-            "long":  "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110",
-            "permissions": "None"
-        }
-    },
-    
-
-    "string": {
-        "description": "String manipulation commands",
-        "morse": {
-            "usage": "/morse `[encode/decode]` `<input>`",
-            "short": "Encodes / Decodes Morse Code.",
-            "long":  "Encodes a string into Morse Code, or decodes Morse Code.\nFormat: Spaces between letters, ` / ` for spaces.",
-            "permissions": "None"
-        }
-    },
-
-
-    "science": {
-        "description": "Science related commands",
-        "apod": {
-            "usage": "/apod",
-            "short": "Shows the NASA Astronomy Picture of the Day.",
-            "long":  "Shows the NASA Astronomy Picture of the Day.",
-            "permissions": "None"
-        },
-
-        "element": {
-            "usage": "/element `<element>`",
-            "short": "Shows information about an element.",
-            "long":  "Shows information about an element.\n`<element>` accepts Name, Atomic Mass, and Atomic Number.",
-            "permissions": "None"
-        }
-    },
-
-
-    "fun": {
-        "description": "Fun commands such as cat images",
-        "animal": {
-            "usage": "/animal <animal>",
-            "short": "Shows a random animal image.",
-            "long":  "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda.",
-            "permissions": "None"
-        }
-    },
-
-
-    "other": {
-        "description": "Other commands",
-        "time": {
-            "usage": "/time",
-            "short": "Gets time and date.",
-            "long":  "Gets time and date in UTC, will add timezone feature later.",
-            "permissions": "None"
-        }
+    "ping": {
+      "usage": "/ping",
+      "short": "Pings the bot.",
+      "long": "Pings the bot.",
+      "permissions": "None"
     }
+  },
+  "discord": {
+    "description": "Discord-related commands",
+    "server": {
+      "usage": "/server",
+      "short": "Shows information about your server.",
+      "long": "Shows information about your server, such as member, channel, role, and emoji counts, and creation date.",
+      "permissions": "None"
+    },
+    "user": {
+      "usage": "/user `<user>`",
+      "short": "Shows information about a user.",
+      "long": "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information",
+      "permissions": "None"
+    },
+    "status": {
+      "usage": "/status `<user>`.",
+      "short": "Shows status information for a user.",
+      "long": "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity",
+      "permissions": "None"
+    },
+    "avatar": {
+      "usage": "/avatar `<user>`",
+      "short": "Gets the avatar of a user.",
+      "long": "Gets the avatar of a user.",
+      "permissions": "None"
+    },
+    "serveravatar": {
+      "usage": "/serveravatar",
+      "short": "Gets the avatar of the current server.",
+      "long": "Gets the avatar of the current server.",
+      "permissions": "None"
+    },
+    "channel": {
+      "usage": "/channel `<channel>`",
+      "short": "Shows information about a channel.",
+      "long": "Shows information about a channel, including:\n-Date created\n- ID\n- Threads",
+      "permissions": "None"
+    },
+    "roles": {
+      "usage": "/roles",
+      "short": "Lists all roles.",
+      "long": "Lists all roles.",
+      "permissions": "None"
+    },
+    "role": {
+      "usage": "/role `<role>`",
+      "short": "Shows information about a role.",
+      "long": "Shows information about a role, including:\n-Date created\n- ID\n- Color\n- Position",
+      "permissions": "None"
+    }
+  },
+  "moderation": {
+    "description": "Discord moderation tools",
+    "clear": {
+      "usage": "/clear `<amount>`",
+      "short": "Clears messages.",
+      "long": "Clears 1-100 messages.",
+      "permissions": "Manage Messages"
+    },
+    "warn": {
+      "usage": "/warn `<user>` `<reason>` `<message>`",
+      "short": "Warning system for moderation",
+      "long": "Warns a user for a specified `<reason>`.\n(Optional) Copy the offending message link into `<message>`.",
+      "permissions": "Manage Messages"
+    },
+    "unwarn": {
+      "usage": "/unwarn `<warning>` `<reason>`",
+      "short": "Warning system for moderation",
+      "long": "Unwarns a user.\nCopy the message link of the bot's warning message into `<warning>`.",
+      "permissions": "Manage Messages"
+    }
+  },
+  "math": {
+    "description": "Math and numbers",
+    "calc": {
+      "usage": "/calc `<equation>`",
+      "short": "Calculates math equations.",
+      "long": "Calculates `<equation>`. Things it accepts: https://mathjs.org/",
+      "permissions": "None"
+    },
+    "base": {
+      "usage": "/base `<number>` `<base>` `<target>`",
+      "short": "Converts numbers between bases.",
+      "long": "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110",
+      "permissions": "None"
+    }
+  },
+  "string": {
+    "description": "String manipulation commands",
+    "morse": {
+      "usage": "/morse `[encode/decode]` `<input>`",
+      "short": "Encodes / Decodes Morse Code.",
+      "long": "Encodes a string into Morse Code, or decodes Morse Code.\nFormat: Spaces between letters, ` / ` for spaces.",
+      "permissions": "None"
+    }
+  },
+  "science": {
+    "description": "Science related commands",
+    "apod": {
+      "usage": "/apod",
+      "short": "Shows the NASA Astronomy Picture of the Day.",
+      "long": "Shows the NASA Astronomy Picture of the Day.",
+      "permissions": "None"
+    },
+    "element": {
+      "usage": "/element `<element>`",
+      "short": "Shows information about an element.",
+      "long": "Shows information about an element.\n`<element>` accepts Name, Atomic Mass, and Atomic Number.",
+      "permissions": "None"
+    }
+  },
+  "fun": {
+    "description": "Fun commands such as cat images",
+    "animal": {
+      "usage": "/animal <animal>",
+      "short": "Shows a random animal image.",
+      "long": "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda.",
+      "permissions": "None"
+    }
+  },
+  "other": {
+    "description": "Other commands",
+    "time": {
+      "usage": "/time",
+      "short": "Gets time and date.",
+      "long": "Gets time and date in UTC, will add timezone feature later.",
+      "permissions": "None"
+    }
+  }
 }
