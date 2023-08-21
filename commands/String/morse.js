@@ -1,14 +1,12 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
-const FileSystem = require("fs");
+const fs = require("fs");
 
 // Command Data //
 const name = "morse";
-const description = "Encodes / Decodes Morse Code.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addStringOption(option => option
         .setName("operation")
         .setDescription("Do you want to encode or decode a string?")
@@ -35,7 +33,7 @@ module.exports = {
         // Data //
         const operation = await interaction.options.getString("operation");
         const input = await interaction.options.getString("input");
-        let morse = JSON.parse(FileSystem.readFileSync("./morse.json"));
+        let morse = JSON.parse(fs.readFileSync("./morse.json"));
 
 
         // Convert //

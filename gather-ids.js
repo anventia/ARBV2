@@ -1,5 +1,5 @@
 const axios = require('axios');
-const FileSystem = require("fs");
+const fs = require("fs");
 const { token, applicationId } = require("./config.json");
 
 const headers = {
@@ -12,10 +12,11 @@ axios.get(`https://discord.com/api/v10/applications/${applicationId}/commands`, 
 
     let res = "{\n"
     for(let command of commands) {
+        if(command.name.substring(0, 3) == "arb") continue;
         res += `    "${command.name}": "${command.id}",\n`
     }
     res = res.substring(0, res.length-2) + "\n}";
-    FileSystem.writeFileSync("./commandIds.json", res);
+    fs.writeFileSync("./commandIds.json", res);
 
   })
   .catch(error => {

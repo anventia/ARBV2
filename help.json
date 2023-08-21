@@ -10,7 +10,7 @@
 
         "help": {
             "usage": "/help `<category>`\n/help `<command>`",
-            "short": "Help command",
+            "short": "Help command.",
             "long":  "`<category>`: Lists commands in <category>.\n`<command>`: Shows more detailed information and usage for a command.",
             "permissions": "None"
         },
@@ -20,6 +20,13 @@
             "short": "Configuration for bot settings.",
             "long":  "Shows the bot's configuration, or optionally change the settings.",
             "permissions": "Administrator"
+        },
+
+        "ping": {
+            "usage": "/ping",
+            "short": "Pings the bot.",
+            "long":  "Pings the bot.",
+            "permissions": "None"
         }
     },
 
@@ -34,21 +41,21 @@
         },
 
         "user": {
-            "usage": "/user `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "usage": "/user `<user>`",
             "short": "Shows information about a user.",
             "long":  "Shows information about a specified user, including:\n- Status\n- Discord/Server Join Date\n- ID\n- Role Information",
             "permissions": "None"
         },
 
         "status": {
-            "usage": "/status `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "usage": "/status `<user>`.",
             "short": "Shows status information for a user.",
             "long":  "Shows information about all a user's current activities, including:\n- Status\n- Spotify\n- Game Activity",
             "permissions": "None"
         },
         
         "avatar": {
-            "usage": "/avatar `<user>`\nUse `me` for yourself. Accepts @mentions and IDs.",
+            "usage": "/avatar `<user>`",
             "short": "Gets the avatar of a user.",
             "long": "Gets the avatar of a user.",
             "permissions": "None"
@@ -58,6 +65,27 @@
             "usage": "/serveravatar",
             "short": "Gets the avatar of the current server.",
             "long": "Gets the avatar of the current server.",
+            "permissions": "None"
+        },
+
+        "channel": {
+            "usage": "/channel `<channel>`",
+            "short": "Shows information about a channel.",
+            "long": "Shows information about a channel, including:\n-Date created\n- ID\n- Threads",
+            "permissions": "None"
+        },
+
+        "role": {
+            "usage": "/role `<role>`",
+            "short": "Shows information about a role.",
+            "long": "Shows information about a role, including:\n-Date created\n- ID\n- Color\n- Position",
+            "permissions": "None"
+        },
+
+        "roles": {
+            "usage": "/roles",
+            "short": "Lists all roles.",
+            "long": "Lists all roles.",
             "permissions": "None"
         }
     },

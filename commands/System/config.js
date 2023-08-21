@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data // //
 const name = "config";
-const description = "Bot configuration (Administrator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addChannelOption(option => option
         .setName("warningschannel")
         .setDescription("Channel to send warning messages")

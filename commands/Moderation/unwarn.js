@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "unwarn";
-const description = "Unwarns a user. (Moderator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addStringOption(option => option
         .setName("warning")
         .setDescription("Link to warning message to remove")

@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "channel";
-const description = "Gets information for a channel.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addChannelOption(option => option
         .setName("channel")
         .setDescription("Specify a channel")

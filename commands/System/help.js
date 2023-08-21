@@ -1,14 +1,12 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const _ = require('lodash');
 const { prefix } = require("../../config.json");
-const FileSystem = require("fs");
+const fs = require("fs");
 
 // Command Data //
 const name = "help";
-const description = "Help commands.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addStringOption(option => option
         .setName("input")
         .setDescription("Category or command to view")
@@ -25,7 +23,7 @@ module.exports = {
         // Data //
         let option;
         try { option = interaction.options.getString("input").toLowerCase(); } catch(err) {};      
-        //const helpJSON = JSON.parse(FileSystem.readFileSync("./help.json"));  // help.json 
+        //const helpJSON = JSON.parse(fs.readFileSync("./help.json"));  // help.json 
         
         
         // Check Parameter //

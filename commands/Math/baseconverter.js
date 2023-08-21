@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "base";
-const description = "Converts numbers between bases";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addStringOption(option => option
         .setName("value")
         .setDescription("Value to be converted")

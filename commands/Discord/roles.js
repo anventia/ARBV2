@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "roles";
-const description = "Lists roles in the server.";
 const commandData = new SlashCommandBuilder()
-    .setName(name)
-    .setDescription(description);
+    .setName(name);
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 

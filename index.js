@@ -57,12 +57,16 @@ for (const file of eventFiles) {
 }
 
 client.on('guildCreate', (guild) => {
-	Tags.create({
-		server: guild.id,
-		cmdUsage: {},
-		warnings: {},
-		warnChannel: null
-	})
+	try {
+		Tags.findOne({ where: { server: guild.id } })
+	} catch(err) {
+		Tags.create({
+			server: guild.id,
+			cmdUsage: {},
+			warnings: {},
+			warnChannel: null
+		})
+	}
 })
 
 
@@ -87,8 +91,7 @@ commandIds = JSON.parse(fs.readFileSync("./commandIds.json"));
 client.on("interactionCreate", async interaction => {
 	if (!interaction.isCommand()) return;
 	const command = client.commands.get(interaction.commandName);
-	console.log(command);
-	if (!command) return;
+		if (!command) return;
 	try {
 		await command.execute(client, interaction);  // Executes the command
 	} catch (error) {

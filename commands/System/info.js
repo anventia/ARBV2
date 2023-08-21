@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "info";
-const description = "Shows bot information";
 const commandData = new SlashCommandBuilder()
-    .setName(name)
-    .setDescription(description);
+    .setName(name);
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 module.exports = {

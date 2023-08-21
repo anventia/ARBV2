@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "animal";
-const description = "Shows a random animal picture";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addStringOption(option => option
         .setName("animal")
         .setDescription("Specify an animal")

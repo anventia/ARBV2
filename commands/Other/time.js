@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "time";
-const description = "Gets UTC time. (YYYY/MM/DD)";
 const commandData = new SlashCommandBuilder()
-    .setName(name)
-    .setDescription(description);
+    .setName(name);
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 

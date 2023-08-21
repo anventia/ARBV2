@@ -9,14 +9,22 @@ const commands = []; // commadnFiles
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
 const commandFolders = fs.readdirSync("./commands");
 
+helpJSON = JSON.parse(fs.readFileSync("./help.json")); 
+
 console.log(commandFolders);
 function loadCommands() {
     for(const folder of commandFolders) {  // For each folder...
         const loadFolder = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));  // Load that folder
         for(const file of loadFolder) {  // For each file within the folder
             const command = require(`./commands/${folder}/${file}`);  // Load file
-	        commands.push(command.data.toJSON());
-            try { commands.push(command.alias.toJSON()) } catch(err) {};
+
+            command.data.description = command.alias.description = "No description set!"  // Default description
+            try {   // Read and load descriptions from help.json
+                command.data.description = command.alias.description = (helpJSON[folder.toLowerCase()][command.data.name]["short"]);
+            } catch(err) {}  // IDK why I need try/catch for this
+
+            commands.push(command.data.toJSON());
+            commands.push(command.alias.toJSON());            
         }
         
     }

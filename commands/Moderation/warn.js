@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "warn";
-const description = "Warn a user. (Moderator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addUserOption(option => option
         .setName("user")
         .setDescription("Specify a user")

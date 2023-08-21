@@ -6,8 +6,7 @@ const { prefix } = require("../../config.json");
 const name = "test";
 const description = "Test";
 const commandData = new SlashCommandBuilder()
-    .setName(name)
-    .setDescription(description);
+    .setName(name);
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 

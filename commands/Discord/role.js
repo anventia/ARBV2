@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "role";
-const description = "Gets information for a role.";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addRoleOption(option => option
         .setName("role")
         .setDescription("Specify a role")

@@ -4,10 +4,8 @@ const { prefix } = require("../../config.json");
 
 // Command Data //
 const name = "clear";
-const description = "Clears a certian amount of messages from a channel. (Moderator Only)";
 const commandData = new SlashCommandBuilder()
     .setName(name)
-    .setDescription(description)
     .addIntegerOption(option => option
         .setName("amount")
         .setDescription("Amount of messages to clear. [0 < n <= 100]")
