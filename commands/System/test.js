@@ -23,6 +23,11 @@ module.exports = {
 		const input = interaction.options.getString("test") ?? " ";
 
 
+		// await globalTags.create({
+		// 	globalCmdUsage: {}
+		// });
+
+
 		const testEmbed = new EmbedBuilder()
 			.setColor(embedBlue)
 			.setTitle("test")

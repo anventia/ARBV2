@@ -24,6 +24,12 @@
       "short": "Pings the bot.",
       "long": "Pings the bot.",
       "permissions": "None"
+    },
+    "topcommands": {
+      "usage": "/topcommands",
+      "short": "Shows the bot's top 10 commands.",
+      "long": "Shows the top 10 of your bot's commands used in the current server.",
+      "permissions": "None"
     }
   },
   "discord": {

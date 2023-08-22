@@ -19,9 +19,9 @@ module.exports = {
             .setTitle("Information page for ARB.V2")
             .setThumbnail(url)
             .addFields(
-                { name: "Basic Info:", value: "Created On:\nVersion:\n", inline: true },
+                { name: "Basic Info:", value: "V1.0 Released On:\nV2.0 Released On:\nVersion:\n", inline: true },
                 { name: emptyString, value: emptyString, inline: true },
-                { name: emptyString, value: "2021/10/27\nv2.0.0", inline: true },
+                { name: emptyString, value: "2020/04/22\nNot yet!\nv2.0.0", inline: true },
 
                 { name: "Credits:", value: "Created By:\nCreated With:\n", inline: true },
                 { name: emptyString, value: emptyString, inline: true },

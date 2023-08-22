@@ -3,6 +3,7 @@ const fs = require("fs");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
 const SQL = require("sequelize");
+const { prefix } = require("./config.json");
 
 const client = new Client({ intents: [
 	GatewayIntentBits.Guilds, 
@@ -27,6 +28,10 @@ Tags = sql.define("tags", {
 	cmdUsage: SQL.JSON,
 	warnings: SQL.JSON,
 	warnChannel: SQL.TEXT
+})
+
+globalTags = sql.define("globalTags", {
+	globalCmdUsage: SQL.JSON
 })
 
 
@@ -94,6 +99,25 @@ client.on("interactionCreate", async interaction => {
 		if (!command) return;
 	try {
 		await command.execute(client, interaction);  // Executes the command
+
+
+		// Command Usage Logging //
+		const tag = await Tags.findOne({ where: { server: interaction.guildId } });
+		const globalTag = await globalTags.findOne({ where: { id: 1 } });
+		const commandName = (command.data.name).replace(prefix, "")
+		let cmdUsage = tag.get("cmdUsage");
+		let globalCmdUsage = globalTag.get("globalCmdUsage")
+
+		cmdUsage[commandName] = (cmdUsage[commandName] ?? 0) + 1;
+		globalCmdUsage[commandName] = (globalCmdUsage[commandName] ?? 0) + 1;
+		
+		try { 
+			await Tags.update({ cmdUsage: cmdUsage }, { where: { server: interaction.guildId } });
+			await globalTags.update({ globalCmdUsage: globalCmdUsage }, { where: { id: 1 } });
+		}
+        catch(err) { await f.sendError(err) }
+		
+
 	} catch (error) {
 		console.error(error);
 		sendConsole("An error occured!", error, embedRed, interaction, "reply");  // Error handling
@@ -117,4 +141,5 @@ async function sendConsole(title, value, color, interaction, type) {
 
 // Log in and run bot //
 Tags.sync();
+globalTags.sync();
 client.login(token);
