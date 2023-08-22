@@ -31,7 +31,7 @@ module.exports = {
         if(interaction.options.getChannel("warningschannel") != null) {
             chId = interaction.options.getChannel("warningschannel").id;
             try { await Tags.update({ warnChannel: chId }, { where: { server: interaction.guildId } }) } 
-            catch(err) { console.log(err) }
+            catch(err) { await f.sendError(err) }
         }
 
 

@@ -111,6 +111,18 @@
       "short": "Converts numbers between bases.",
       "long": "Converts `<number>` from base `<base>` to base `<target>`.\nCurrently supports bases 2-62.\nBases 11-36 are not case-sensitive.\n101010010110",
       "permissions": "None"
+    },
+    "roll": {
+      "usage": "/roll `<min>` `<max>` `<amount>`",
+      "short": "Rolls dice with numbers in a specified range.",
+      "long": "Rolls `<amount>` dice with numbers from `<min>` to `<max>`.",
+      "permissions": "None"
+    },
+    "flip": {
+      "usage": "/flip `<amount>`",
+      "short": "Flips coins.",
+      "long": "Flips`<amount>` coins.",
+      "permissions": "None"
     }
   },
   "string": {
@@ -140,9 +152,15 @@
   "fun": {
     "description": "Fun commands such as cat images",
     "animal": {
-      "usage": "/animal <animal>",
+      "usage": "/animal '<animal>'",
       "short": "Shows a random animal image.",
       "long": "Shows a random `<animal>` image. Currently there is cat, dog, fox, bird, and panda.",
+      "permissions": "None"
+    },
+    "8ball": {
+      "usage": "/8ball '<question>'",
+      "short": "Ask the Magic 8 Ball a question!",
+      "long": "Ask the Magic 8 Ball a question!",
       "permissions": "None"
     }
   },

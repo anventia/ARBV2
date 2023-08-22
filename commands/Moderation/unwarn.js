@@ -108,7 +108,7 @@ module.exports = {
 
 
         // Update Database //
-        warningsJSON[userId] = numWarns - 1;
+        warningsJSON[userId] = Math.max(numWarns - 1, 0);
  
         try { await Tags.update({ warnings: warningsJSON }, { where: { server: interaction.guildId } }) }
         catch(err) { await f.sendError(err) }

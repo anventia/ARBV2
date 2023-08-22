@@ -6,7 +6,12 @@ const { prefix } = require("../../config.json");
 const name = "test";
 const description = "Test";
 const commandData = new SlashCommandBuilder()
-    .setName(name);
+    .setName(name)
+	.addStringOption(option => option
+		.setName("test")
+		.setDescription("test")
+		.setRequired(false)
+	);
 const aliasData = _.cloneDeep(commandData).setName(prefix+name);
 
 
@@ -15,24 +20,14 @@ module.exports = {
     alias: aliasData,
 
 	async execute(client, interaction) {
-
-		/*
-		Tags.create({
-			server: interaction.guildId,
-			cmdUsage: {},
-			warnings: {},
-			warnChannel: null
-		})
-		*/
-		//await Tags.update({ warnChannel: 1086635367555403850 }, { where: { server: interaction.guildId } })
+		const input = interaction.options.getString("test") ?? " ";
 
 
 		const testEmbed = new EmbedBuilder()
 			.setColor(embedBlue)
 			.setTitle("test")
 			.addFields(
-				{ name: "Testing", value: "```fix\nTest        1\nTest        2\nTest        3```", inline: false },
-				{ name: "Testing 2", value: "`🇨🇦`", inline: false }
+				{ name: "Testing", value: `\`\`\`${input}\`\`\``, inline: false },
 			);
 	
 		await interaction.reply({embeds: [testEmbed]});

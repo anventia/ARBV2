@@ -21,10 +21,10 @@ function loadCommands() {
             command.data.description = command.alias.description = "No description set!"  // Default description
             try {   // Read and load descriptions from help.json
                 command.data.description = command.alias.description = (helpJSON[folder.toLowerCase()][command.data.name]["short"]);
-            } catch(err) {}  // IDK why I need try/catch for this
+            } catch(err) { console.error(`Command ${command.data.name} missing description!`) }  // IDK why I need try/catch for this
 
             commands.push(command.data.toJSON());
-            commands.push(command.alias.toJSON());            
+            commands.push(command.alias.toJSON());
         }
         
     }
