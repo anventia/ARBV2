@@ -28,7 +28,6 @@ module.exports = {
         let status;
         try { status = member.presence.status; }
         catch { status = "invisible"; }
-
         const types = [
             "Playing a Game",
             "Streaming",
@@ -80,8 +79,7 @@ module.exports = {
                 let img;
                 switch(activity.name) {
                     case "Custom Status":
-                        let emoji = activity.emoji;
-                        if(emoji == null) emoji = "";
+                        const emoji = activity.emoji ?? "";
                         status = `${emoji} ${activity.state}\n`;
 
                         output = new EmbedBuilder()
@@ -112,8 +110,7 @@ module.exports = {
                         break;
                     
                     default:
-                        try { img = activity.assets.largeImageURL(); }
-                        catch(err) { img = "https://i.postimg.cc/L8Yzyf59/discord-Missing-Game.png" };
+                        img = activity.assets.largeImageURL() ?? "https://i.postimg.cc/L8Yzyf59/discord-Missing-Game.png";
                         output = new EmbedBuilder()
                             .setColor("#1ed760")
                             .setThumbnail(img)

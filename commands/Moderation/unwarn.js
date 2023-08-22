@@ -58,8 +58,7 @@ module.exports = {
             author  = fields[1]["value"];
             channel = fields[2]["value"];
             reason  = fields[3]["value"];
-            try { message = fields[4]["value"] }
-            catch(err) {}
+            message = fields[4]["value"] ?? null;
 
         } catch(err) {
             await f.sendMessage("Invalid warning message!", embedRed, interaction, "reply", true);

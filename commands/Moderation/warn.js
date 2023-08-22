@@ -55,9 +55,7 @@ module.exports = {
         const color   = member.displayHexColor;
 
         const reason  = interaction.options.getString("reason");
-        let message;
-        try { message = interaction.options.getString("message")}
-        catch(err) {}
+        const message = interaction.options.getString("message") ?? null;
 
         const warnChannel = await interaction.guild.channels.fetch(chId);
 
